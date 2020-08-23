@@ -11,7 +11,8 @@
         "loadAddress": "0x08000000",
         "verify": true,
         "openocdOption": "-f interface/stlink-v2-1.cfg -f target/stm32l4x.cfg",
-        "deviceName": "STM32L431RC"
+        "deviceName": "STM32L431RC",
+        "binfile": "GCC\\build\\Huawei_LiteOS.elf"
     },
     "general": {
         "sdk": "IoT_LINK",

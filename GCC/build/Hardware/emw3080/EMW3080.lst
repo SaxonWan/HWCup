@@ -1,0 +1,1842 @@
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"EMW3080.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.emw3080_atcmd,"ax",%progbits
+  18              		.align	1
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	emw3080_atcmd:
+  26              	.LFB3:
+  27              		.file 1 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080/EMW3080.c"
+   1:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** #include <string.h>
+   2:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** #include <at.h>
+   3:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** #include <EMW3080.h>
+   4:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** #include <osal.h>
+   5:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+   6:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** #define emw3080_cmd_timeout (20 * 1000)
+   7:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** #define emw3080_cmd_buflen 512
+   8:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** #define emw3080_cmd_index "\r\n+MQTTRECV:0"
+   9:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  10:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_atcmd(const char *cmd, const char *index)
+  11:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+  28              		.loc 1 11 1
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 86B0     		sub	sp, sp, #24
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 32
+  40 0004 02AF     		add	r7, sp, #8
+  41              	.LCFI2:
+  42              		.cfi_def_cfa 7, 24
+  43 0006 7860     		str	r0, [r7, #4]
+  44 0008 3960     		str	r1, [r7]
+  12:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     int ret = 0;
+  45              		.loc 1 12 9
+  46 000a 0023     		movs	r3, #0
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 2
+
+
+  47 000c FB60     		str	r3, [r7, #12]
+  13:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = at_command((unsigned char *)cmd, strlen(cmd), index, NULL, 0, emw3080_cmd_timeout);
+  48              		.loc 1 13 11
+  49 000e 7868     		ldr	r0, [r7, #4]
+  50 0010 FFF7FEFF 		bl	strlen
+  51 0014 0146     		mov	r1, r0
+  52 0016 44F62063 		movw	r3, #20000
+  53 001a 0193     		str	r3, [sp, #4]
+  54 001c 0023     		movs	r3, #0
+  55 001e 0093     		str	r3, [sp]
+  56 0020 0023     		movs	r3, #0
+  57 0022 3A68     		ldr	r2, [r7]
+  58 0024 7868     		ldr	r0, [r7, #4]
+  59 0026 FFF7FEFF 		bl	at_command
+  60 002a F860     		str	r0, [r7, #12]
+  14:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     if (ret >= 0)
+  61              		.loc 1 14 8
+  62 002c FB68     		ldr	r3, [r7, #12]
+  63 002e 002B     		cmp	r3, #0
+  64 0030 01DB     		blt	.L2
+  15:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     {
+  16:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return true;
+  65              		.loc 1 16 16
+  66 0032 0123     		movs	r3, #1
+  67 0034 00E0     		b	.L3
+  68              	.L2:
+  17:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     }
+  18:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     else
+  19:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     {
+  20:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return false;
+  69              		.loc 1 20 16
+  70 0036 0023     		movs	r3, #0
+  71              	.L3:
+  21:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     }
+  22:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+  72              		.loc 1 22 1
+  73 0038 1846     		mov	r0, r3
+  74 003a 1037     		adds	r7, r7, #16
+  75              	.LCFI3:
+  76              		.cfi_def_cfa_offset 8
+  77 003c BD46     		mov	sp, r7
+  78              	.LCFI4:
+  79              		.cfi_def_cfa_register 13
+  80              		@ sp needed
+  81 003e 80BD     		pop	{r7, pc}
+  82              		.cfi_endproc
+  83              	.LFE3:
+  85              		.section	.text.emw3080_atcmd_response,"ax",%progbits
+  86              		.align	1
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  90              		.fpu fpv4-sp-d16
+  92              	emw3080_atcmd_response:
+  93              	.LFB4:
+  23:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  24:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_atcmd_response(const char *cmd, const char *index, char *buf, int len)
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 3
+
+
+  25:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+  94              		.loc 1 25 1
+  95              		.cfi_startproc
+  96              		@ args = 0, pretend = 0, frame = 24
+  97              		@ frame_needed = 1, uses_anonymous_args = 0
+  98 0000 80B5     		push	{r7, lr}
+  99              	.LCFI5:
+ 100              		.cfi_def_cfa_offset 8
+ 101              		.cfi_offset 7, -8
+ 102              		.cfi_offset 14, -4
+ 103 0002 88B0     		sub	sp, sp, #32
+ 104              	.LCFI6:
+ 105              		.cfi_def_cfa_offset 40
+ 106 0004 02AF     		add	r7, sp, #8
+ 107              	.LCFI7:
+ 108              		.cfi_def_cfa 7, 32
+ 109 0006 F860     		str	r0, [r7, #12]
+ 110 0008 B960     		str	r1, [r7, #8]
+ 111 000a 7A60     		str	r2, [r7, #4]
+ 112 000c 3B60     		str	r3, [r7]
+  26:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     int ret = 0;
+ 113              		.loc 1 26 9
+ 114 000e 0023     		movs	r3, #0
+ 115 0010 7B61     		str	r3, [r7, #20]
+  27:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = at_command((unsigned char *)cmd, strlen(cmd), index, (char *)buf, len, emw3080_cmd_timeou
+ 116              		.loc 1 27 11
+ 117 0012 F868     		ldr	r0, [r7, #12]
+ 118 0014 FFF7FEFF 		bl	strlen
+ 119 0018 0146     		mov	r1, r0
+ 120 001a 3B68     		ldr	r3, [r7]
+ 121 001c 44F62062 		movw	r2, #20000
+ 122 0020 0192     		str	r2, [sp, #4]
+ 123 0022 0093     		str	r3, [sp]
+ 124 0024 7B68     		ldr	r3, [r7, #4]
+ 125 0026 BA68     		ldr	r2, [r7, #8]
+ 126 0028 F868     		ldr	r0, [r7, #12]
+ 127 002a FFF7FEFF 		bl	at_command
+ 128 002e 7861     		str	r0, [r7, #20]
+  28:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     if (ret >= 0)
+ 129              		.loc 1 28 8
+ 130 0030 7B69     		ldr	r3, [r7, #20]
+ 131 0032 002B     		cmp	r3, #0
+ 132 0034 01DB     		blt	.L5
+  29:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     {
+  30:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return true;
+ 133              		.loc 1 30 16
+ 134 0036 0123     		movs	r3, #1
+ 135 0038 00E0     		b	.L6
+ 136              	.L5:
+  31:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     }
+  32:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     else
+  33:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     {
+  34:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return false;
+ 137              		.loc 1 34 16
+ 138 003a 0023     		movs	r3, #0
+ 139              	.L6:
+  35:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     }
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 4
+
+
+  36:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 140              		.loc 1 36 1
+ 141 003c 1846     		mov	r0, r3
+ 142 003e 1837     		adds	r7, r7, #24
+ 143              	.LCFI8:
+ 144              		.cfi_def_cfa_offset 8
+ 145 0040 BD46     		mov	sp, r7
+ 146              	.LCFI9:
+ 147              		.cfi_def_cfa_register 13
+ 148              		@ sp needed
+ 149 0042 80BD     		pop	{r7, pc}
+ 150              		.cfi_endproc
+ 151              	.LFE4:
+ 153              		.section	.rodata
+ 154              		.align	2
+ 155              	.LC0:
+ 156 0000 4F4B00   		.ascii	"OK\000"
+ 157              		.section	.text.emw3080_atcmd_ok,"ax",%progbits
+ 158              		.align	1
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.fpu fpv4-sp-d16
+ 164              	emw3080_atcmd_ok:
+ 165              	.LFB5:
+  37:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  38:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_atcmd_ok(const char *cmd)
+  39:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 166              		.loc 1 39 1
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 16
+ 169              		@ frame_needed = 1, uses_anonymous_args = 0
+ 170 0000 80B5     		push	{r7, lr}
+ 171              	.LCFI10:
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 7, -8
+ 174              		.cfi_offset 14, -4
+ 175 0002 84B0     		sub	sp, sp, #16
+ 176              	.LCFI11:
+ 177              		.cfi_def_cfa_offset 24
+ 178 0004 00AF     		add	r7, sp, #0
+ 179              	.LCFI12:
+ 180              		.cfi_def_cfa_register 7
+ 181 0006 7860     		str	r0, [r7, #4]
+  40:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+  41:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd(cmd, "OK");
+ 182              		.loc 1 41 11
+ 183 0008 0449     		ldr	r1, .L9
+ 184 000a 7868     		ldr	r0, [r7, #4]
+ 185 000c FFF7FEFF 		bl	emw3080_atcmd
+ 186 0010 F860     		str	r0, [r7, #12]
+  42:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 187              		.loc 1 42 12
+ 188 0012 FB68     		ldr	r3, [r7, #12]
+  43:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 189              		.loc 1 43 1
+ 190 0014 1846     		mov	r0, r3
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 5
+
+
+ 191 0016 1037     		adds	r7, r7, #16
+ 192              	.LCFI13:
+ 193              		.cfi_def_cfa_offset 8
+ 194 0018 BD46     		mov	sp, r7
+ 195              	.LCFI14:
+ 196              		.cfi_def_cfa_register 13
+ 197              		@ sp needed
+ 198 001a 80BD     		pop	{r7, pc}
+ 199              	.L10:
+ 200              		.align	2
+ 201              	.L9:
+ 202 001c 00000000 		.word	.LC0
+ 203              		.cfi_endproc
+ 204              	.LFE5:
+ 206              		.section	.rodata
+ 207 0003 00       		.align	2
+ 208              	.LC1:
+ 209 0004 54657261 		.ascii	"Terabits_2.4G\000"
+ 209      62697473 
+ 209      5F322E34 
+ 209      4700
+ 210 0012 0000     		.align	2
+ 211              	.LC2:
+ 212 0014 41542B57 		.ascii	"AT+WJAP=%s,%s\015\000"
+ 212      4A41503D 
+ 212      25732C25 
+ 212      730D00
+ 213 0023 00       		.align	2
+ 214              	.LC3:
+ 215 0024 74657261 		.ascii	"terabits\000"
+ 215      62697473 
+ 215      00
+ 216 002d 000000   		.align	2
+ 217              	.LC4:
+ 218 0030 2B574556 		.ascii	"+WEVENT:STATION_UP\000"
+ 218      454E543A 
+ 218      53544154 
+ 218      494F4E5F 
+ 218      555000
+ 219              		.section	.text.emw3080_wifi_connect,"ax",%progbits
+ 220              		.align	1
+ 221              		.syntax unified
+ 222              		.thumb
+ 223              		.thumb_func
+ 224              		.fpu fpv4-sp-d16
+ 226              	emw3080_wifi_connect:
+ 227              	.LFB6:
+  44:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  45:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_wifi_connect(void)
+  46:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 228              		.loc 1 46 1
+ 229              		.cfi_startproc
+ 230              		@ args = 0, pretend = 0, frame = 520
+ 231              		@ frame_needed = 1, uses_anonymous_args = 0
+ 232 0000 80B5     		push	{r7, lr}
+ 233              	.LCFI15:
+ 234              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 6
+
+
+ 235              		.cfi_offset 7, -8
+ 236              		.cfi_offset 14, -4
+ 237 0002 ADF5047D 		sub	sp, sp, #528
+ 238              	.LCFI16:
+ 239              		.cfi_def_cfa_offset 536
+ 240 0006 02AF     		add	r7, sp, #8
+ 241              	.LCFI17:
+ 242              		.cfi_def_cfa 7, 528
+  47:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+  48:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char cmd[emw3080_cmd_buflen];
+  49:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(cmd, 0, emw3080_cmd_buflen);
+ 243              		.loc 1 49 11
+ 244 0008 3B1D     		adds	r3, r7, #4
+ 245 000a 4FF40072 		mov	r2, #512
+ 246 000e 0021     		movs	r1, #0
+ 247 0010 1846     		mov	r0, r3
+ 248 0012 FFF7FEFF 		bl	memset
+  50:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)snprintf(cmd, emw3080_cmd_buflen, "AT+WJAP=%s,%s\r", CONFIG_EMW3080_SSID, CONFIG_EMW3080_
+ 249              		.loc 1 50 11
+ 250 0016 381D     		adds	r0, r7, #4
+ 251 0018 0A4B     		ldr	r3, .L13
+ 252 001a 0093     		str	r3, [sp]
+ 253 001c 0A4B     		ldr	r3, .L13+4
+ 254 001e 0B4A     		ldr	r2, .L13+8
+ 255 0020 4FF40071 		mov	r1, #512
+ 256 0024 FFF7FEFF 		bl	snprintf
+  51:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd(cmd, "+WEVENT:STATION_UP");
+ 257              		.loc 1 51 11
+ 258 0028 3B1D     		adds	r3, r7, #4
+ 259 002a 0949     		ldr	r1, .L13+12
+ 260 002c 1846     		mov	r0, r3
+ 261 002e FFF7FEFF 		bl	emw3080_atcmd
+ 262 0032 C7F80402 		str	r0, [r7, #516]
+  52:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 263              		.loc 1 52 12
+ 264 0036 D7F80432 		ldr	r3, [r7, #516]
+  53:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 265              		.loc 1 53 1
+ 266 003a 1846     		mov	r0, r3
+ 267 003c 07F50277 		add	r7, r7, #520
+ 268              	.LCFI18:
+ 269              		.cfi_def_cfa_offset 8
+ 270 0040 BD46     		mov	sp, r7
+ 271              	.LCFI19:
+ 272              		.cfi_def_cfa_register 13
+ 273              		@ sp needed
+ 274 0042 80BD     		pop	{r7, pc}
+ 275              	.L14:
+ 276              		.align	2
+ 277              	.L13:
+ 278 0044 24000000 		.word	.LC3
+ 279 0048 04000000 		.word	.LC1
+ 280 004c 14000000 		.word	.LC2
+ 281 0050 30000000 		.word	.LC4
+ 282              		.cfi_endproc
+ 283              	.LFE6:
+ 285              		.section	.rodata
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 7
+
+
+ 286 0043 00       		.align	2
+ 287              	.LC5:
+ 288 0044 35663365 		.ascii	"5f3e791a5d28ab02bd85ce95_dev01\000"
+ 288      37393161 
+ 288      35643238 
+ 288      61623032 
+ 288      62643835 
+ 289 0063 00       		.align	2
+ 290              	.LC6:
+ 291 0064 41542B4D 		.ascii	"AT+MQTTAUTH=%s,%s\015\000"
+ 291      51545441 
+ 291      5554483D 
+ 291      25732C25 
+ 291      730D00
+ 292 0077 00       		.align	2
+ 293              	.LC7:
+ 294 0078 62393762 		.ascii	"b97bc3a1c878dcc1d9cb7b7c8f232557e069b40fb4ebf218db5"
+ 294      63336131 
+ 294      63383738 
+ 294      64636331 
+ 294      64396362 
+ 295 00ab 32633039 		.ascii	"2c09718084027\000"
+ 295      37313830 
+ 295      38343032 
+ 295      3700
+ 296              		.section	.text.emw3080_set_auth,"ax",%progbits
+ 297              		.align	1
+ 298              		.syntax unified
+ 299              		.thumb
+ 300              		.thumb_func
+ 301              		.fpu fpv4-sp-d16
+ 303              	emw3080_set_auth:
+ 304              	.LFB7:
+  54:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  55:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_set_auth(void)
+  56:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 305              		.loc 1 56 1
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 520
+ 308              		@ frame_needed = 1, uses_anonymous_args = 0
+ 309 0000 80B5     		push	{r7, lr}
+ 310              	.LCFI20:
+ 311              		.cfi_def_cfa_offset 8
+ 312              		.cfi_offset 7, -8
+ 313              		.cfi_offset 14, -4
+ 314 0002 ADF5047D 		sub	sp, sp, #528
+ 315              	.LCFI21:
+ 316              		.cfi_def_cfa_offset 536
+ 317 0006 02AF     		add	r7, sp, #8
+ 318              	.LCFI22:
+ 319              		.cfi_def_cfa 7, 528
+  57:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+  58:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char cmd[emw3080_cmd_buflen];
+  59:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(cmd, 0, emw3080_cmd_buflen);
+ 320              		.loc 1 59 11
+ 321 0008 3B1D     		adds	r3, r7, #4
+ 322 000a 4FF40072 		mov	r2, #512
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 8
+
+
+ 323 000e 0021     		movs	r1, #0
+ 324 0010 1846     		mov	r0, r3
+ 325 0012 FFF7FEFF 		bl	memset
+  60:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)snprintf(cmd, emw3080_cmd_buflen, "AT+MQTTAUTH=%s,%s\r", MQTT_DEVICE_ID, MQTT_PASSWORD);
+ 326              		.loc 1 60 11
+ 327 0016 381D     		adds	r0, r7, #4
+ 328 0018 0A4B     		ldr	r3, .L17
+ 329 001a 0093     		str	r3, [sp]
+ 330 001c 0A4B     		ldr	r3, .L17+4
+ 331 001e 0B4A     		ldr	r2, .L17+8
+ 332 0020 4FF40071 		mov	r1, #512
+ 333 0024 FFF7FEFF 		bl	snprintf
+  61:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd_ok(cmd);
+ 334              		.loc 1 61 11
+ 335 0028 3B1D     		adds	r3, r7, #4
+ 336 002a 1846     		mov	r0, r3
+ 337 002c FFF7FEFF 		bl	emw3080_atcmd_ok
+ 338 0030 C7F80402 		str	r0, [r7, #516]
+  62:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 339              		.loc 1 62 12
+ 340 0034 D7F80432 		ldr	r3, [r7, #516]
+  63:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 341              		.loc 1 63 1
+ 342 0038 1846     		mov	r0, r3
+ 343 003a 07F50277 		add	r7, r7, #520
+ 344              	.LCFI23:
+ 345              		.cfi_def_cfa_offset 8
+ 346 003e BD46     		mov	sp, r7
+ 347              	.LCFI24:
+ 348              		.cfi_def_cfa_register 13
+ 349              		@ sp needed
+ 350 0040 80BD     		pop	{r7, pc}
+ 351              	.L18:
+ 352 0042 00BF     		.align	2
+ 353              	.L17:
+ 354 0044 78000000 		.word	.LC7
+ 355 0048 44000000 		.word	.LC5
+ 356 004c 64000000 		.word	.LC6
+ 357              		.cfi_endproc
+ 358              	.LFE7:
+ 360              		.section	.rodata
+ 361 00b9 000000   		.align	2
+ 362              	.LC8:
+ 363 00bc 35663365 		.ascii	"5f3e791a5d28ab02bd85ce95_dev01_0_0_2020082021\000"
+ 363      37393161 
+ 363      35643238 
+ 363      61623032 
+ 363      62643835 
+ 364 00ea 0000     		.align	2
+ 365              	.LC9:
+ 366 00ec 41542B4D 		.ascii	"AT+MQTTCID=%s\015\000"
+ 366      51545443 
+ 366      49443D25 
+ 366      730D00
+ 367              		.section	.text.emw3080_set_cid,"ax",%progbits
+ 368              		.align	1
+ 369              		.syntax unified
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 9
+
+
+ 370              		.thumb
+ 371              		.thumb_func
+ 372              		.fpu fpv4-sp-d16
+ 374              	emw3080_set_cid:
+ 375              	.LFB8:
+  64:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  65:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_set_cid(void)
+  66:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 376              		.loc 1 66 1
+ 377              		.cfi_startproc
+ 378              		@ args = 0, pretend = 0, frame = 520
+ 379              		@ frame_needed = 1, uses_anonymous_args = 0
+ 380 0000 80B5     		push	{r7, lr}
+ 381              	.LCFI25:
+ 382              		.cfi_def_cfa_offset 8
+ 383              		.cfi_offset 7, -8
+ 384              		.cfi_offset 14, -4
+ 385 0002 ADF5027D 		sub	sp, sp, #520
+ 386              	.LCFI26:
+ 387              		.cfi_def_cfa_offset 528
+ 388 0006 00AF     		add	r7, sp, #0
+ 389              	.LCFI27:
+ 390              		.cfi_def_cfa_register 7
+  67:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+  68:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char cmd[emw3080_cmd_buflen];
+  69:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(cmd, 0, emw3080_cmd_buflen);
+ 391              		.loc 1 69 11
+ 392 0008 3B1D     		adds	r3, r7, #4
+ 393 000a 4FF40072 		mov	r2, #512
+ 394 000e 0021     		movs	r1, #0
+ 395 0010 1846     		mov	r0, r3
+ 396 0012 FFF7FEFF 		bl	memset
+  70:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)snprintf(cmd, emw3080_cmd_buflen, "AT+MQTTCID=%s\r", MQTT_CLIENT_ID);
+ 397              		.loc 1 70 11
+ 398 0016 381D     		adds	r0, r7, #4
+ 399 0018 094B     		ldr	r3, .L21
+ 400 001a 0A4A     		ldr	r2, .L21+4
+ 401 001c 4FF40071 		mov	r1, #512
+ 402 0020 FFF7FEFF 		bl	snprintf
+  71:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd_ok(cmd);
+ 403              		.loc 1 71 11
+ 404 0024 3B1D     		adds	r3, r7, #4
+ 405 0026 1846     		mov	r0, r3
+ 406 0028 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 407 002c C7F80402 		str	r0, [r7, #516]
+  72:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 408              		.loc 1 72 12
+ 409 0030 D7F80432 		ldr	r3, [r7, #516]
+  73:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 410              		.loc 1 73 1
+ 411 0034 1846     		mov	r0, r3
+ 412 0036 07F50277 		add	r7, r7, #520
+ 413              	.LCFI28:
+ 414              		.cfi_def_cfa_offset 8
+ 415 003a BD46     		mov	sp, r7
+ 416              	.LCFI29:
+ 417              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 10
+
+
+ 418              		@ sp needed
+ 419 003c 80BD     		pop	{r7, pc}
+ 420              	.L22:
+ 421 003e 00BF     		.align	2
+ 422              	.L21:
+ 423 0040 BC000000 		.word	.LC8
+ 424 0044 EC000000 		.word	.LC9
+ 425              		.cfi_endproc
+ 426              	.LFE8:
+ 428              		.section	.rodata
+ 429 00fb 00       		.align	2
+ 430              	.LC10:
+ 431 00fc 696F742D 		.ascii	"iot-mqtts.cn-north-4.myhuaweicloud.com,1883\000"
+ 431      6D717474 
+ 431      732E636E 
+ 431      2D6E6F72 
+ 431      74682D34 
+ 432              		.align	2
+ 433              	.LC11:
+ 434 0128 41542B4D 		.ascii	"AT+MQTTSOCK=%s\015\000"
+ 434      51545453 
+ 434      4F434B3D 
+ 434      25730D00 
+ 435              		.section	.text.emw3080_set_sock,"ax",%progbits
+ 436              		.align	1
+ 437              		.syntax unified
+ 438              		.thumb
+ 439              		.thumb_func
+ 440              		.fpu fpv4-sp-d16
+ 442              	emw3080_set_sock:
+ 443              	.LFB9:
+  74:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  75:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_set_sock(void)
+  76:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 444              		.loc 1 76 1
+ 445              		.cfi_startproc
+ 446              		@ args = 0, pretend = 0, frame = 520
+ 447              		@ frame_needed = 1, uses_anonymous_args = 0
+ 448 0000 80B5     		push	{r7, lr}
+ 449              	.LCFI30:
+ 450              		.cfi_def_cfa_offset 8
+ 451              		.cfi_offset 7, -8
+ 452              		.cfi_offset 14, -4
+ 453 0002 ADF5027D 		sub	sp, sp, #520
+ 454              	.LCFI31:
+ 455              		.cfi_def_cfa_offset 528
+ 456 0006 00AF     		add	r7, sp, #0
+ 457              	.LCFI32:
+ 458              		.cfi_def_cfa_register 7
+  77:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+  78:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char cmd[emw3080_cmd_buflen];
+  79:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(cmd, 0, emw3080_cmd_buflen);
+ 459              		.loc 1 79 11
+ 460 0008 3B1D     		adds	r3, r7, #4
+ 461 000a 4FF40072 		mov	r2, #512
+ 462 000e 0021     		movs	r1, #0
+ 463 0010 1846     		mov	r0, r3
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 11
+
+
+ 464 0012 FFF7FEFF 		bl	memset
+  80:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)snprintf(cmd, emw3080_cmd_buflen, "AT+MQTTSOCK=%s\r", MQTT_SOCKET);
+ 465              		.loc 1 80 11
+ 466 0016 381D     		adds	r0, r7, #4
+ 467 0018 094B     		ldr	r3, .L25
+ 468 001a 0A4A     		ldr	r2, .L25+4
+ 469 001c 4FF40071 		mov	r1, #512
+ 470 0020 FFF7FEFF 		bl	snprintf
+  81:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd_ok(cmd);
+ 471              		.loc 1 81 11
+ 472 0024 3B1D     		adds	r3, r7, #4
+ 473 0026 1846     		mov	r0, r3
+ 474 0028 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 475 002c C7F80402 		str	r0, [r7, #516]
+  82:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 476              		.loc 1 82 12
+ 477 0030 D7F80432 		ldr	r3, [r7, #516]
+  83:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 478              		.loc 1 83 1
+ 479 0034 1846     		mov	r0, r3
+ 480 0036 07F50277 		add	r7, r7, #520
+ 481              	.LCFI33:
+ 482              		.cfi_def_cfa_offset 8
+ 483 003a BD46     		mov	sp, r7
+ 484              	.LCFI34:
+ 485              		.cfi_def_cfa_register 13
+ 486              		@ sp needed
+ 487 003c 80BD     		pop	{r7, pc}
+ 488              	.L26:
+ 489 003e 00BF     		.align	2
+ 490              	.L25:
+ 491 0040 FC000000 		.word	.LC10
+ 492 0044 28010000 		.word	.LC11
+ 493              		.cfi_endproc
+ 494              	.LFE9:
+ 496              		.section	.rodata
+ 497              		.align	2
+ 498              	.LC12:
+ 499 0138 41542B4D 		.ascii	"AT+MQTTPUB=$oc/devices/%s/sys/properties/report,1\015"
+ 499      51545450 
+ 499      55423D24 
+ 499      6F632F64 
+ 499      65766963 
+ 500 016a 00       		.ascii	"\000"
+ 501              		.section	.text.emw3080_set_pub,"ax",%progbits
+ 502              		.align	1
+ 503              		.syntax unified
+ 504              		.thumb
+ 505              		.thumb_func
+ 506              		.fpu fpv4-sp-d16
+ 508              	emw3080_set_pub:
+ 509              	.LFB10:
+  84:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  85:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_set_pub(void)
+  86:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 510              		.loc 1 86 1
+ 511              		.cfi_startproc
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 12
+
+
+ 512              		@ args = 0, pretend = 0, frame = 520
+ 513              		@ frame_needed = 1, uses_anonymous_args = 0
+ 514 0000 80B5     		push	{r7, lr}
+ 515              	.LCFI35:
+ 516              		.cfi_def_cfa_offset 8
+ 517              		.cfi_offset 7, -8
+ 518              		.cfi_offset 14, -4
+ 519 0002 ADF5027D 		sub	sp, sp, #520
+ 520              	.LCFI36:
+ 521              		.cfi_def_cfa_offset 528
+ 522 0006 00AF     		add	r7, sp, #0
+ 523              	.LCFI37:
+ 524              		.cfi_def_cfa_register 7
+  87:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+  88:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char cmd[emw3080_cmd_buflen];
+  89:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(cmd, 0, emw3080_cmd_buflen);
+ 525              		.loc 1 89 11
+ 526 0008 3B1D     		adds	r3, r7, #4
+ 527 000a 4FF40072 		mov	r2, #512
+ 528 000e 0021     		movs	r1, #0
+ 529 0010 1846     		mov	r0, r3
+ 530 0012 FFF7FEFF 		bl	memset
+  90:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)snprintf(cmd, emw3080_cmd_buflen, "AT+MQTTPUB=$oc/devices/%s/sys/properties/report,1\r", 
+ 531              		.loc 1 90 11
+ 532 0016 381D     		adds	r0, r7, #4
+ 533 0018 094B     		ldr	r3, .L29
+ 534 001a 0A4A     		ldr	r2, .L29+4
+ 535 001c 4FF40071 		mov	r1, #512
+ 536 0020 FFF7FEFF 		bl	snprintf
+  91:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd_ok(cmd);
+ 537              		.loc 1 91 11
+ 538 0024 3B1D     		adds	r3, r7, #4
+ 539 0026 1846     		mov	r0, r3
+ 540 0028 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 541 002c C7F80402 		str	r0, [r7, #516]
+  92:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 542              		.loc 1 92 12
+ 543 0030 D7F80432 		ldr	r3, [r7, #516]
+  93:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 544              		.loc 1 93 1
+ 545 0034 1846     		mov	r0, r3
+ 546 0036 07F50277 		add	r7, r7, #520
+ 547              	.LCFI38:
+ 548              		.cfi_def_cfa_offset 8
+ 549 003a BD46     		mov	sp, r7
+ 550              	.LCFI39:
+ 551              		.cfi_def_cfa_register 13
+ 552              		@ sp needed
+ 553 003c 80BD     		pop	{r7, pc}
+ 554              	.L30:
+ 555 003e 00BF     		.align	2
+ 556              	.L29:
+ 557 0040 44000000 		.word	.LC5
+ 558 0044 38010000 		.word	.LC12
+ 559              		.cfi_endproc
+ 560              	.LFE10:
+ 562              		.section	.rodata
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 13
+
+
+ 563 016b 00       		.align	2
+ 564              	.LC13:
+ 565 016c 41542B4D 		.ascii	"AT+MQTTSUB=0,$oc/devices/%s/sys/commands/#,0\015\000"
+ 565      51545453 
+ 565      55423D30 
+ 565      2C246F63 
+ 565      2F646576 
+ 566 019a 0000     		.align	2
+ 567              	.LC14:
+ 568 019c 2B4D5154 		.ascii	"+MQTTEVENT:0,SUBSCRIBE,SUCCESS\000"
+ 568      54455645 
+ 568      4E543A30 
+ 568      2C535542 
+ 568      53435249 
+ 569              		.section	.text.emw3080_sub_command,"ax",%progbits
+ 570              		.align	1
+ 571              		.syntax unified
+ 572              		.thumb
+ 573              		.thumb_func
+ 574              		.fpu fpv4-sp-d16
+ 576              	emw3080_sub_command:
+ 577              	.LFB11:
+  94:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+  95:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** static bool_t emw3080_sub_command(void)
+  96:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 578              		.loc 1 96 1
+ 579              		.cfi_startproc
+ 580              		@ args = 0, pretend = 0, frame = 520
+ 581              		@ frame_needed = 1, uses_anonymous_args = 0
+ 582 0000 80B5     		push	{r7, lr}
+ 583              	.LCFI40:
+ 584              		.cfi_def_cfa_offset 8
+ 585              		.cfi_offset 7, -8
+ 586              		.cfi_offset 14, -4
+ 587 0002 ADF5027D 		sub	sp, sp, #520
+ 588              	.LCFI41:
+ 589              		.cfi_def_cfa_offset 528
+ 590 0006 00AF     		add	r7, sp, #0
+ 591              	.LCFI42:
+ 592              		.cfi_def_cfa_register 7
+  97:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+  98:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char cmd[emw3080_cmd_buflen];
+  99:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(cmd, 0, emw3080_cmd_buflen);
+ 593              		.loc 1 99 11
+ 594 0008 3B1D     		adds	r3, r7, #4
+ 595 000a 4FF40072 		mov	r2, #512
+ 596 000e 0021     		movs	r1, #0
+ 597 0010 1846     		mov	r0, r3
+ 598 0012 FFF7FEFF 		bl	memset
+ 100:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)snprintf(cmd, emw3080_cmd_buflen, "AT+MQTTSUB=0,$oc/devices/%s/sys/commands/#,0\r", MQTT_
+ 599              		.loc 1 100 11
+ 600 0016 381D     		adds	r0, r7, #4
+ 601 0018 094B     		ldr	r3, .L33
+ 602 001a 0A4A     		ldr	r2, .L33+4
+ 603 001c 4FF40071 		mov	r1, #512
+ 604 0020 FFF7FEFF 		bl	snprintf
+ 101:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd(cmd, "+MQTTEVENT:0,SUBSCRIBE,SUCCESS");
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 14
+
+
+ 605              		.loc 1 101 11
+ 606 0024 3B1D     		adds	r3, r7, #4
+ 607 0026 0849     		ldr	r1, .L33+8
+ 608 0028 1846     		mov	r0, r3
+ 609 002a FFF7FEFF 		bl	emw3080_atcmd
+ 610 002e C7F80402 		str	r0, [r7, #516]
+ 102:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 611              		.loc 1 102 12
+ 612 0032 D7F80432 		ldr	r3, [r7, #516]
+ 103:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 613              		.loc 1 103 1
+ 614 0036 1846     		mov	r0, r3
+ 615 0038 07F50277 		add	r7, r7, #520
+ 616              	.LCFI43:
+ 617              		.cfi_def_cfa_offset 8
+ 618 003c BD46     		mov	sp, r7
+ 619              	.LCFI44:
+ 620              		.cfi_def_cfa_register 13
+ 621              		@ sp needed
+ 622 003e 80BD     		pop	{r7, pc}
+ 623              	.L34:
+ 624              		.align	2
+ 625              	.L33:
+ 626 0040 44000000 		.word	.LC5
+ 627 0044 6C010000 		.word	.LC13
+ 628 0048 9C010000 		.word	.LC14
+ 629              		.cfi_endproc
+ 630              	.LFE11:
+ 632              		.section	.rodata
+ 633 01bb 00       		.align	2
+ 634              	.LC15:
+ 635 01bc 5B25735D 		.ascii	"[%s][%u][%s:%d] %s:invalid frame:%d byte:%s\012\015"
+ 635      5B25755D 
+ 635      5B25733A 
+ 635      25645D20 
+ 635      25733A69 
+ 636 01e9 0D0A00   		.ascii	"\015\012\000"
+ 637              		.align	2
+ 638              	.LC16:
+ 639 01ec 5B524356 		.ascii	"[RCV][JSON]%s\015\012\000"
+ 639      5D5B4A53 
+ 639      4F4E5D25 
+ 639      730D0A00 
+ 640              		.section	.text.emw3080_rcvdeal,"ax",%progbits
+ 641              		.align	1
+ 642              		.global	emw3080_rcvdeal
+ 643              		.syntax unified
+ 644              		.thumb
+ 645              		.thumb_func
+ 646              		.fpu fpv4-sp-d16
+ 648              	emw3080_rcvdeal:
+ 649              	.LFB12:
+ 104:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+ 105:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** int emw3080_rcvdeal(void *args, void *data, size_t datalen)
+ 106:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 650              		.loc 1 106 1
+ 651              		.cfi_startproc
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 15
+
+
+ 652              		@ args = 0, pretend = 0, frame = 32
+ 653              		@ frame_needed = 1, uses_anonymous_args = 0
+ 654 0000 90B5     		push	{r4, r7, lr}
+ 655              	.LCFI45:
+ 656              		.cfi_def_cfa_offset 12
+ 657              		.cfi_offset 4, -12
+ 658              		.cfi_offset 7, -8
+ 659              		.cfi_offset 14, -4
+ 660 0002 8DB0     		sub	sp, sp, #52
+ 661              	.LCFI46:
+ 662              		.cfi_def_cfa_offset 64
+ 663 0004 04AF     		add	r7, sp, #16
+ 664              	.LCFI47:
+ 665              		.cfi_def_cfa 7, 48
+ 666 0006 F860     		str	r0, [r7, #12]
+ 667 0008 B960     		str	r1, [r7, #8]
+ 668 000a 7A60     		str	r2, [r7, #4]
+ 107:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     int ret = 0;
+ 669              		.loc 1 107 9
+ 670 000c 0023     		movs	r3, #0
+ 671 000e FB61     		str	r3, [r7, #28]
+ 108:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char *rcvdata = data;
+ 672              		.loc 1 108 11
+ 673 0010 BB68     		ldr	r3, [r7, #8]
+ 674 0012 BB61     		str	r3, [r7, #24]
+ 109:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char *json_string;
+ 110:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     if (datalen < strlen(emw3080_cmd_index))
+ 675              		.loc 1 110 8
+ 676 0014 7B68     		ldr	r3, [r7, #4]
+ 677 0016 0C2B     		cmp	r3, #12
+ 678 0018 1BD8     		bhi	.L36
+ 111:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     {
+ 112:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         LINK_LOG_DEBUG("%s:invalid frame:%d byte:%s\n\r", __FUNCTION__, datalen, (char *)rcvdata);
+ 679              		.loc 1 112 9
+ 680 001a FFF7FEFF 		bl	link_log_level_get
+ 681 001e 0346     		mov	r3, r0
+ 682 0020 012B     		cmp	r3, #1
+ 683 0022 14D8     		bhi	.L37
+ 684              		.loc 1 112 9 is_stmt 0 discriminator 1
+ 685 0024 0120     		movs	r0, #1
+ 686 0026 FFF7FEFF 		bl	link_log_level_name
+ 687 002a 0446     		mov	r4, r0
+ 688 002c FFF7FEFF 		bl	osal_sys_time
+ 689 0030 0246     		mov	r2, r0
+ 690 0032 0B46     		mov	r3, r1
+ 691 0034 BB69     		ldr	r3, [r7, #24]
+ 692 0036 0393     		str	r3, [sp, #12]
+ 693 0038 7B68     		ldr	r3, [r7, #4]
+ 694 003a 0293     		str	r3, [sp, #8]
+ 695 003c 164B     		ldr	r3, .L40
+ 696 003e 0193     		str	r3, [sp, #4]
+ 697 0040 7023     		movs	r3, #112
+ 698 0042 0093     		str	r3, [sp]
+ 699 0044 144B     		ldr	r3, .L40
+ 700 0046 2146     		mov	r1, r4
+ 701 0048 1448     		ldr	r0, .L40+4
+ 702 004a FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 16
+
+
+ 703              	.L37:
+ 113:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return ret;
+ 704              		.loc 1 113 16 is_stmt 1
+ 705 004e FB69     		ldr	r3, [r7, #28]
+ 706 0050 1EE0     		b	.L38
+ 707              	.L36:
+ 114:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     }
+ 115:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     json_string = strchr(rcvdata, '{');
+ 708              		.loc 1 115 19
+ 709 0052 7B21     		movs	r1, #123
+ 710 0054 B869     		ldr	r0, [r7, #24]
+ 711 0056 FFF7FEFF 		bl	strchr
+ 712 005a 7861     		str	r0, [r7, #20]
+ 116:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     printf("[RCV][JSON]%s\r\n", json_string);
+ 713              		.loc 1 116 5
+ 714 005c 7969     		ldr	r1, [r7, #20]
+ 715 005e 1048     		ldr	r0, .L40+8
+ 716 0060 FFF7FEFF 		bl	printf
+ 117:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     if (json_string == NULL)
+ 717              		.loc 1 117 8
+ 718 0064 7B69     		ldr	r3, [r7, #20]
+ 719 0066 002B     		cmp	r3, #0
+ 720 0068 01D1     		bne	.L39
+ 118:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return ret;
+ 721              		.loc 1 118 16
+ 722 006a FB69     		ldr	r3, [r7, #28]
+ 723 006c 10E0     		b	.L38
+ 724              	.L39:
+ 119:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(emw3080_rcv_data, 0, 1024);
+ 725              		.loc 1 119 11
+ 726 006e 4FF48062 		mov	r2, #1024
+ 727 0072 0021     		movs	r1, #0
+ 728 0074 0B48     		ldr	r0, .L40+12
+ 729 0076 FFF7FEFF 		bl	memset
+ 120:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     strcpy(emw3080_rcv_data, json_string);
+ 730              		.loc 1 120 5
+ 731 007a 7969     		ldr	r1, [r7, #20]
+ 732 007c 0948     		ldr	r0, .L40+12
+ 733 007e FFF7FEFF 		bl	strcpy
+ 121:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = osal_semp_post(mqtt_rcv_sync);
+ 734              		.loc 1 121 11
+ 735 0082 094B     		ldr	r3, .L40+16
+ 736 0084 1B68     		ldr	r3, [r3]
+ 737 0086 1846     		mov	r0, r3
+ 738 0088 FFF7FEFF 		bl	osal_semp_post
+ 739 008c F861     		str	r0, [r7, #28]
+ 122:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 740              		.loc 1 122 12
+ 741 008e FB69     		ldr	r3, [r7, #28]
+ 742              	.L38:
+ 123:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 743              		.loc 1 123 1
+ 744 0090 1846     		mov	r0, r3
+ 745 0092 2437     		adds	r7, r7, #36
+ 746              	.LCFI48:
+ 747              		.cfi_def_cfa_offset 12
+ 748 0094 BD46     		mov	sp, r7
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 17
+
+
+ 749              	.LCFI49:
+ 750              		.cfi_def_cfa_register 13
+ 751              		@ sp needed
+ 752 0096 90BD     		pop	{r4, r7, pc}
+ 753              	.L41:
+ 754              		.align	2
+ 755              	.L40:
+ 756 0098 00000000 		.word	__FUNCTION__.7012
+ 757 009c BC010000 		.word	.LC15
+ 758 00a0 EC010000 		.word	.LC16
+ 759 00a4 00000000 		.word	emw3080_rcv_data
+ 760 00a8 00000000 		.word	mqtt_rcv_sync
+ 761              		.cfi_endproc
+ 762              	.LFE12:
+ 764              		.section	.rodata
+ 765              		.align	2
+ 766              	.LC17:
+ 767 01fc 41542B46 		.ascii	"AT+FACTORY\015\000"
+ 767      4143544F 
+ 767      52590D00 
+ 768              		.align	2
+ 769              	.LC18:
+ 770 0208 41540D00 		.ascii	"AT\015\000"
+ 771              		.align	2
+ 772              	.LC19:
+ 773 020c 41542B55 		.ascii	"AT+UARTE=OFF\015\000"
+ 773      41525445 
+ 773      3D4F4646 
+ 773      0D00
+ 774 021a 0000     		.align	2
+ 775              	.LC20:
+ 776 021c 41542B57 		.ascii	"AT+WEVENT=ON\015\000"
+ 776      4556454E 
+ 776      543D4F4E 
+ 776      0D00
+ 777              		.section	.text.emw3080_wifi_init,"ax",%progbits
+ 778              		.align	1
+ 779              		.global	emw3080_wifi_init
+ 780              		.syntax unified
+ 781              		.thumb
+ 782              		.thumb_func
+ 783              		.fpu fpv4-sp-d16
+ 785              	emw3080_wifi_init:
+ 786              	.LFB13:
+ 124:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+ 125:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** bool_t emw3080_wifi_init(void)
+ 126:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 787              		.loc 1 126 1
+ 788              		.cfi_startproc
+ 789              		@ args = 0, pretend = 0, frame = 0
+ 790              		@ frame_needed = 1, uses_anonymous_args = 0
+ 791 0000 80B5     		push	{r7, lr}
+ 792              	.LCFI50:
+ 793              		.cfi_def_cfa_offset 8
+ 794              		.cfi_offset 7, -8
+ 795              		.cfi_offset 14, -4
+ 796 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 18
+
+
+ 797              	.LCFI51:
+ 798              		.cfi_def_cfa_register 7
+ 127:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+FACTORY\r");
+ 799              		.loc 1 127 5
+ 800 0004 0A48     		ldr	r0, .L44
+ 801 0006 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 128:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     osal_task_sleep(1000 * 2);
+ 802              		.loc 1 128 5
+ 803 000a 4FF4FA60 		mov	r0, #2000
+ 804 000e FFF7FEFF 		bl	osal_task_sleep
+ 129:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT\r");
+ 805              		.loc 1 129 5
+ 806 0012 0848     		ldr	r0, .L44+4
+ 807 0014 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 130:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+UARTE=OFF\r");
+ 808              		.loc 1 130 5
+ 809 0018 0748     		ldr	r0, .L44+8
+ 810 001a FFF7FEFF 		bl	emw3080_atcmd_ok
+ 131:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+WEVENT=ON\r");
+ 811              		.loc 1 131 5
+ 812 001e 0748     		ldr	r0, .L44+12
+ 813 0020 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 132:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return (emw3080_wifi_connect());
+ 814              		.loc 1 132 13
+ 815 0024 FFF7FEFF 		bl	emw3080_wifi_connect
+ 816 0028 0346     		mov	r3, r0
+ 133:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 817              		.loc 1 133 1
+ 818 002a 1846     		mov	r0, r3
+ 819 002c 80BD     		pop	{r7, pc}
+ 820              	.L45:
+ 821 002e 00BF     		.align	2
+ 822              	.L44:
+ 823 0030 FC010000 		.word	.LC17
+ 824 0034 08020000 		.word	.LC18
+ 825 0038 0C020000 		.word	.LC19
+ 826 003c 1C020000 		.word	.LC20
+ 827              		.cfi_endproc
+ 828              	.LFE13:
+ 830              		.section	.rodata
+ 831 022a 0000     		.align	2
+ 832              	.LC21:
+ 833 022c 41542B53 		.ascii	"AT+SNTPCFG=+8,ntp.ntsc.ac.cn\015\000"
+ 833      4E545043 
+ 833      46473D2B 
+ 833      382C6E74 
+ 833      702E6E74 
+ 834 024a 0000     		.align	2
+ 835              	.LC22:
+ 836 024c 41542B53 		.ascii	"AT+SNTPTIME\015\000"
+ 836      4E545054 
+ 836      494D450D 
+ 836      00
+ 837              		.section	.text.emw3080_ntp,"ax",%progbits
+ 838              		.align	1
+ 839              		.global	emw3080_ntp
+ 840              		.syntax unified
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 19
+
+
+ 841              		.thumb
+ 842              		.thumb_func
+ 843              		.fpu fpv4-sp-d16
+ 845              	emw3080_ntp:
+ 846              	.LFB14:
+ 134:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+ 135:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** bool_t emw3080_ntp(uint8_t *year, uint8_t *month, uint8_t *day, uint8_t *hour, uint8_t *minute, uin
+ 136:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 847              		.loc 1 136 1
+ 848              		.cfi_startproc
+ 849              		@ args = 8, pretend = 0, frame = 544
+ 850              		@ frame_needed = 1, uses_anonymous_args = 0
+ 851 0000 90B5     		push	{r4, r7, lr}
+ 852              	.LCFI52:
+ 853              		.cfi_def_cfa_offset 12
+ 854              		.cfi_offset 4, -12
+ 855              		.cfi_offset 7, -8
+ 856              		.cfi_offset 14, -4
+ 857 0002 ADF5097D 		sub	sp, sp, #548
+ 858              	.LCFI53:
+ 859              		.cfi_def_cfa_offset 560
+ 860 0006 00AF     		add	r7, sp, #0
+ 861              	.LCFI54:
+ 862              		.cfi_def_cfa_register 7
+ 863 0008 07F10C04 		add	r4, r7, #12
+ 864 000c 2060     		str	r0, [r4]
+ 865 000e 07F10800 		add	r0, r7, #8
+ 866 0012 0160     		str	r1, [r0]
+ 867 0014 391D     		adds	r1, r7, #4
+ 868 0016 0A60     		str	r2, [r1]
+ 869 0018 3A46     		mov	r2, r7
+ 870 001a 1360     		str	r3, [r2]
+ 137:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     int i = 0;
+ 871              		.loc 1 137 9
+ 872 001c 0023     		movs	r3, #0
+ 873 001e C7F81C32 		str	r3, [r7, #540]
+ 138:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+ 139:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char buf[emw3080_cmd_buflen];
+ 140:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(buf, 0, emw3080_cmd_buflen);
+ 874              		.loc 1 140 11
+ 875 0022 07F11403 		add	r3, r7, #20
+ 876 0026 4FF40072 		mov	r2, #512
+ 877 002a 0021     		movs	r1, #0
+ 878 002c 1846     		mov	r0, r3
+ 879 002e FFF7FEFF 		bl	memset
+ 141:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+SNTPCFG=+8,ntp.ntsc.ac.cn\r");
+ 880              		.loc 1 141 5
+ 881 0032 7E48     		ldr	r0, .L58
+ 882 0034 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 142:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd_response("AT+SNTPTIME\r", "OK", buf, emw3080_cmd_buflen);
+ 883              		.loc 1 142 11
+ 884 0038 07F11402 		add	r2, r7, #20
+ 885 003c 4FF40073 		mov	r3, #512
+ 886 0040 7B49     		ldr	r1, .L58+4
+ 887 0042 7C48     		ldr	r0, .L58+8
+ 888 0044 FFF7FEFF 		bl	emw3080_atcmd_response
+ 889 0048 C7F81402 		str	r0, [r7, #532]
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 20
+
+
+ 143:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     if (!ret)
+ 890              		.loc 1 143 8
+ 891 004c D7F81432 		ldr	r3, [r7, #532]
+ 892 0050 002B     		cmp	r3, #0
+ 893 0052 02D1     		bne	.L47
+ 144:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return ret;
+ 894              		.loc 1 144 16
+ 895 0054 D7F81432 		ldr	r3, [r7, #532]
+ 896 0058 E2E0     		b	.L56
+ 897              	.L47:
+ 145:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     for (i = 0; i < emw3080_cmd_buflen; i++)
+ 898              		.loc 1 145 12
+ 899 005a 0023     		movs	r3, #0
+ 900 005c C7F81C32 		str	r3, [r7, #540]
+ 901              		.loc 1 145 5
+ 902 0060 0CE0     		b	.L49
+ 903              	.L52:
+ 146:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         if (buf[i] == ':')
+ 904              		.loc 1 146 16
+ 905 0062 07F11402 		add	r2, r7, #20
+ 906 0066 D7F81C32 		ldr	r3, [r7, #540]
+ 907 006a 1344     		add	r3, r3, r2
+ 908 006c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 909              		.loc 1 146 12
+ 910 006e 3A2B     		cmp	r3, #58
+ 911 0070 0AD0     		beq	.L57
+ 145:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     for (i = 0; i < emw3080_cmd_buflen; i++)
+ 912              		.loc 1 145 42 discriminator 2
+ 913 0072 D7F81C32 		ldr	r3, [r7, #540]
+ 914 0076 0133     		adds	r3, r3, #1
+ 915 0078 C7F81C32 		str	r3, [r7, #540]
+ 916              	.L49:
+ 145:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     for (i = 0; i < emw3080_cmd_buflen; i++)
+ 917              		.loc 1 145 5 discriminator 1
+ 918 007c D7F81C32 		ldr	r3, [r7, #540]
+ 919 0080 B3F5007F 		cmp	r3, #512
+ 920 0084 EDDB     		blt	.L52
+ 921 0086 00E0     		b	.L51
+ 922              	.L57:
+ 147:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****             break;
+ 923              		.loc 1 147 13
+ 924 0088 00BF     		nop
+ 925              	.L51:
+ 926              	.LBB2:
+ 148:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     for (int j = 0; j < emw3080_cmd_buflen; j++)
+ 927              		.loc 1 148 14
+ 928 008a 0023     		movs	r3, #0
+ 929 008c C7F81832 		str	r3, [r7, #536]
+ 930              		.loc 1 148 5
+ 931 0090 1BE0     		b	.L53
+ 932              	.L55:
+ 149:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         if (buf[j] >= '0')
+ 933              		.loc 1 149 16
+ 934 0092 07F11402 		add	r2, r7, #20
+ 935 0096 D7F81832 		ldr	r3, [r7, #536]
+ 936 009a 1344     		add	r3, r3, r2
+ 937 009c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 21
+
+
+ 938              		.loc 1 149 12
+ 939 009e 2F2B     		cmp	r3, #47
+ 940 00a0 0ED9     		bls	.L54
+ 150:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****             buf[j] -= '0';
+ 941              		.loc 1 150 20
+ 942 00a2 07F11402 		add	r2, r7, #20
+ 943 00a6 D7F81832 		ldr	r3, [r7, #536]
+ 944 00aa 1344     		add	r3, r3, r2
+ 945 00ac 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 946 00ae 303B     		subs	r3, r3, #48
+ 947 00b0 D9B2     		uxtb	r1, r3
+ 948 00b2 07F11402 		add	r2, r7, #20
+ 949 00b6 D7F81832 		ldr	r3, [r7, #536]
+ 950 00ba 1344     		add	r3, r3, r2
+ 951 00bc 0A46     		mov	r2, r1
+ 952 00be 1A70     		strb	r2, [r3]
+ 953              	.L54:
+ 148:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     for (int j = 0; j < emw3080_cmd_buflen; j++)
+ 954              		.loc 1 148 46 discriminator 2
+ 955 00c0 D7F81832 		ldr	r3, [r7, #536]
+ 956 00c4 0133     		adds	r3, r3, #1
+ 957 00c6 C7F81832 		str	r3, [r7, #536]
+ 958              	.L53:
+ 148:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     for (int j = 0; j < emw3080_cmd_buflen; j++)
+ 959              		.loc 1 148 5 discriminator 1
+ 960 00ca D7F81832 		ldr	r3, [r7, #536]
+ 961 00ce B3F5007F 		cmp	r3, #512
+ 962 00d2 DEDB     		blt	.L55
+ 963              	.LBE2:
+ 151:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     i += 3;
+ 964              		.loc 1 151 7
+ 965 00d4 D7F81C32 		ldr	r3, [r7, #540]
+ 966 00d8 0333     		adds	r3, r3, #3
+ 967 00da C7F81C32 		str	r3, [r7, #540]
+ 152:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     *year = buf[i] * 10 + buf[i + 1];
+ 968              		.loc 1 152 16
+ 969 00de 07F11402 		add	r2, r7, #20
+ 970 00e2 D7F81C32 		ldr	r3, [r7, #540]
+ 971 00e6 1344     		add	r3, r3, r2
+ 972 00e8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 973              		.loc 1 152 25
+ 974 00ea 1A46     		mov	r2, r3
+ 975 00ec 9200     		lsls	r2, r2, #2
+ 976 00ee 1344     		add	r3, r3, r2
+ 977 00f0 5B00     		lsls	r3, r3, #1
+ 978 00f2 DAB2     		uxtb	r2, r3
+ 979              		.loc 1 152 33
+ 980 00f4 D7F81C32 		ldr	r3, [r7, #540]
+ 981 00f8 0133     		adds	r3, r3, #1
+ 982              		.loc 1 152 30
+ 983 00fa 07F11401 		add	r1, r7, #20
+ 984 00fe CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 985              		.loc 1 152 25
+ 986 0100 1344     		add	r3, r3, r2
+ 987 0102 DAB2     		uxtb	r2, r3
+ 988              		.loc 1 152 11
+ 989 0104 07F10C03 		add	r3, r7, #12
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 22
+
+
+ 990 0108 1B68     		ldr	r3, [r3]
+ 991 010a 1A70     		strb	r2, [r3]
+ 153:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     i += 3;
+ 992              		.loc 1 153 7
+ 993 010c D7F81C32 		ldr	r3, [r7, #540]
+ 994 0110 0333     		adds	r3, r3, #3
+ 995 0112 C7F81C32 		str	r3, [r7, #540]
+ 154:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     *month = buf[i] * 10 + buf[i + 1];
+ 996              		.loc 1 154 17
+ 997 0116 07F11402 		add	r2, r7, #20
+ 998 011a D7F81C32 		ldr	r3, [r7, #540]
+ 999 011e 1344     		add	r3, r3, r2
+ 1000 0120 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1001              		.loc 1 154 26
+ 1002 0122 1A46     		mov	r2, r3
+ 1003 0124 9200     		lsls	r2, r2, #2
+ 1004 0126 1344     		add	r3, r3, r2
+ 1005 0128 5B00     		lsls	r3, r3, #1
+ 1006 012a DAB2     		uxtb	r2, r3
+ 1007              		.loc 1 154 34
+ 1008 012c D7F81C32 		ldr	r3, [r7, #540]
+ 1009 0130 0133     		adds	r3, r3, #1
+ 1010              		.loc 1 154 31
+ 1011 0132 07F11401 		add	r1, r7, #20
+ 1012 0136 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 1013              		.loc 1 154 26
+ 1014 0138 1344     		add	r3, r3, r2
+ 1015 013a DAB2     		uxtb	r2, r3
+ 1016              		.loc 1 154 12
+ 1017 013c 07F10803 		add	r3, r7, #8
+ 1018 0140 1B68     		ldr	r3, [r3]
+ 1019 0142 1A70     		strb	r2, [r3]
+ 155:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     i += 3;
+ 1020              		.loc 1 155 7
+ 1021 0144 D7F81C32 		ldr	r3, [r7, #540]
+ 1022 0148 0333     		adds	r3, r3, #3
+ 1023 014a C7F81C32 		str	r3, [r7, #540]
+ 156:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     *day = buf[i] * 10 + buf[i + 1];
+ 1024              		.loc 1 156 15
+ 1025 014e 07F11402 		add	r2, r7, #20
+ 1026 0152 D7F81C32 		ldr	r3, [r7, #540]
+ 1027 0156 1344     		add	r3, r3, r2
+ 1028 0158 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1029              		.loc 1 156 24
+ 1030 015a 1A46     		mov	r2, r3
+ 1031 015c 9200     		lsls	r2, r2, #2
+ 1032 015e 1344     		add	r3, r3, r2
+ 1033 0160 5B00     		lsls	r3, r3, #1
+ 1034 0162 DAB2     		uxtb	r2, r3
+ 1035              		.loc 1 156 32
+ 1036 0164 D7F81C32 		ldr	r3, [r7, #540]
+ 1037 0168 0133     		adds	r3, r3, #1
+ 1038              		.loc 1 156 29
+ 1039 016a 07F11401 		add	r1, r7, #20
+ 1040 016e CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 1041              		.loc 1 156 24
+ 1042 0170 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 23
+
+
+ 1043 0172 DAB2     		uxtb	r2, r3
+ 1044              		.loc 1 156 10
+ 1045 0174 3B1D     		adds	r3, r7, #4
+ 1046 0176 1B68     		ldr	r3, [r3]
+ 1047 0178 1A70     		strb	r2, [r3]
+ 157:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     i += 3;
+ 1048              		.loc 1 157 7
+ 1049 017a D7F81C32 		ldr	r3, [r7, #540]
+ 1050 017e 0333     		adds	r3, r3, #3
+ 1051 0180 C7F81C32 		str	r3, [r7, #540]
+ 158:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     *hour = buf[i] * 10 + buf[i + 1];
+ 1052              		.loc 1 158 16
+ 1053 0184 07F11402 		add	r2, r7, #20
+ 1054 0188 D7F81C32 		ldr	r3, [r7, #540]
+ 1055 018c 1344     		add	r3, r3, r2
+ 1056 018e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1057              		.loc 1 158 25
+ 1058 0190 1A46     		mov	r2, r3
+ 1059 0192 9200     		lsls	r2, r2, #2
+ 1060 0194 1344     		add	r3, r3, r2
+ 1061 0196 5B00     		lsls	r3, r3, #1
+ 1062 0198 DAB2     		uxtb	r2, r3
+ 1063              		.loc 1 158 33
+ 1064 019a D7F81C32 		ldr	r3, [r7, #540]
+ 1065 019e 0133     		adds	r3, r3, #1
+ 1066              		.loc 1 158 30
+ 1067 01a0 07F11401 		add	r1, r7, #20
+ 1068 01a4 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 1069              		.loc 1 158 25
+ 1070 01a6 1344     		add	r3, r3, r2
+ 1071 01a8 DAB2     		uxtb	r2, r3
+ 1072              		.loc 1 158 11
+ 1073 01aa 3B46     		mov	r3, r7
+ 1074 01ac 1B68     		ldr	r3, [r3]
+ 1075 01ae 1A70     		strb	r2, [r3]
+ 159:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     i += 3;
+ 1076              		.loc 1 159 7
+ 1077 01b0 D7F81C32 		ldr	r3, [r7, #540]
+ 1078 01b4 0333     		adds	r3, r3, #3
+ 1079 01b6 C7F81C32 		str	r3, [r7, #540]
+ 160:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     *minute = buf[i] * 10 + buf[i + 1];
+ 1080              		.loc 1 160 18
+ 1081 01ba 07F11402 		add	r2, r7, #20
+ 1082 01be D7F81C32 		ldr	r3, [r7, #540]
+ 1083 01c2 1344     		add	r3, r3, r2
+ 1084 01c4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1085              		.loc 1 160 27
+ 1086 01c6 1A46     		mov	r2, r3
+ 1087 01c8 9200     		lsls	r2, r2, #2
+ 1088 01ca 1344     		add	r3, r3, r2
+ 1089 01cc 5B00     		lsls	r3, r3, #1
+ 1090 01ce DAB2     		uxtb	r2, r3
+ 1091              		.loc 1 160 35
+ 1092 01d0 D7F81C32 		ldr	r3, [r7, #540]
+ 1093 01d4 0133     		adds	r3, r3, #1
+ 1094              		.loc 1 160 32
+ 1095 01d6 07F11401 		add	r1, r7, #20
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 24
+
+
+ 1096 01da CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 1097              		.loc 1 160 27
+ 1098 01dc 1344     		add	r3, r3, r2
+ 1099 01de DAB2     		uxtb	r2, r3
+ 1100              		.loc 1 160 13
+ 1101 01e0 D7F83032 		ldr	r3, [r7, #560]
+ 1102 01e4 1A70     		strb	r2, [r3]
+ 161:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     i += 3;
+ 1103              		.loc 1 161 7
+ 1104 01e6 D7F81C32 		ldr	r3, [r7, #540]
+ 1105 01ea 0333     		adds	r3, r3, #3
+ 1106 01ec C7F81C32 		str	r3, [r7, #540]
+ 162:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     *second = buf[i] * 10 + buf[i + 1];
+ 1107              		.loc 1 162 18
+ 1108 01f0 07F11402 		add	r2, r7, #20
+ 1109 01f4 D7F81C32 		ldr	r3, [r7, #540]
+ 1110 01f8 1344     		add	r3, r3, r2
+ 1111 01fa 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1112              		.loc 1 162 27
+ 1113 01fc 1A46     		mov	r2, r3
+ 1114 01fe 9200     		lsls	r2, r2, #2
+ 1115 0200 1344     		add	r3, r3, r2
+ 1116 0202 5B00     		lsls	r3, r3, #1
+ 1117 0204 DAB2     		uxtb	r2, r3
+ 1118              		.loc 1 162 35
+ 1119 0206 D7F81C32 		ldr	r3, [r7, #540]
+ 1120 020a 0133     		adds	r3, r3, #1
+ 1121              		.loc 1 162 32
+ 1122 020c 07F11401 		add	r1, r7, #20
+ 1123 0210 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+ 1124              		.loc 1 162 27
+ 1125 0212 1344     		add	r3, r3, r2
+ 1126 0214 DAB2     		uxtb	r2, r3
+ 1127              		.loc 1 162 13
+ 1128 0216 D7F83432 		ldr	r3, [r7, #564]
+ 1129 021a 1A70     		strb	r2, [r3]
+ 163:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 1130              		.loc 1 163 12
+ 1131 021c D7F81432 		ldr	r3, [r7, #532]
+ 1132              	.L56:
+ 164:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 1133              		.loc 1 164 1 discriminator 1
+ 1134 0220 1846     		mov	r0, r3
+ 1135 0222 07F50977 		add	r7, r7, #548
+ 1136              	.LCFI55:
+ 1137              		.cfi_def_cfa_offset 12
+ 1138 0226 BD46     		mov	sp, r7
+ 1139              	.LCFI56:
+ 1140              		.cfi_def_cfa_register 13
+ 1141              		@ sp needed
+ 1142 0228 90BD     		pop	{r4, r7, pc}
+ 1143              	.L59:
+ 1144 022a 00BF     		.align	2
+ 1145              	.L58:
+ 1146 022c 2C020000 		.word	.LC21
+ 1147 0230 00000000 		.word	.LC0
+ 1148 0234 4C020000 		.word	.LC22
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 25
+
+
+ 1149              		.cfi_endproc
+ 1150              	.LFE14:
+ 1152              		.section	.rodata
+ 1153 0259 000000   		.align	2
+ 1154              	.LC23:
+ 1155 025c 41542B4D 		.ascii	"AT+MQTTCAVERIFY=OFF,OFF\015\000"
+ 1155      51545443 
+ 1155      41564552 
+ 1155      4946593D 
+ 1155      4F46462C 
+ 1156 0275 000000   		.align	2
+ 1157              	.LC24:
+ 1158 0278 41542B4D 		.ascii	"AT+MQTTSSL=OFF\015\000"
+ 1158      51545453 
+ 1158      534C3D4F 
+ 1158      46460D00 
+ 1159              		.align	2
+ 1160              	.LC25:
+ 1161 0288 41542B4D 		.ascii	"AT+MQTTRECONN=ON\015\000"
+ 1161      51545452 
+ 1161      45434F4E 
+ 1161      4E3D4F4E 
+ 1161      0D00
+ 1162 029a 0000     		.align	2
+ 1163              	.LC26:
+ 1164 029c 41542B4D 		.ascii	"AT+MQTTAUTOSTART=OFF\015\000"
+ 1164      51545441 
+ 1164      55544F53 
+ 1164      54415254 
+ 1164      3D4F4646 
+ 1165 02b2 0000     		.align	2
+ 1166              	.LC27:
+ 1167 02b4 41542B4D 		.ascii	"AT+MQTTKEEPALIVE=120\015\000"
+ 1167      5154544B 
+ 1167      45455041 
+ 1167      4C495645 
+ 1167      3D313230 
+ 1168 02ca 0000     		.align	2
+ 1169              	.LC28:
+ 1170 02cc 41542B4D 		.ascii	"AT+MQTTEVENT=ON\015\000"
+ 1170      51545445 
+ 1170      56454E54 
+ 1170      3D4F4E0D 
+ 1170      00
+ 1171 02dd 000000   		.align	2
+ 1172              	.LC29:
+ 1173 02e0 2B4D5154 		.ascii	"+MQTTEVENT:CONNECT,SUCCESS\000"
+ 1173      54455645 
+ 1173      4E543A43 
+ 1173      4F4E4E45 
+ 1173      43542C53 
+ 1174 02fb 00       		.align	2
+ 1175              	.LC30:
+ 1176 02fc 41542B4D 		.ascii	"AT+MQTTSTART\015\000"
+ 1176      51545453 
+ 1176      54415254 
+ 1176      0D00
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 26
+
+
+ 1177 030a 0000     		.align	2
+ 1178              	.LC31:
+ 1179 030c 0D0A2B4D 		.ascii	"\015\012+MQTTRECV:0\000"
+ 1179      51545452 
+ 1179      4543563A 
+ 1179      3000
+ 1180 031a 0000     		.align	2
+ 1181              	.LC32:
+ 1182 031c 656D7733 		.ascii	"emw3080rcv\000"
+ 1182      30383072 
+ 1182      637600
+ 1183              		.section	.text.emw3080_mqtt_init,"ax",%progbits
+ 1184              		.align	1
+ 1185              		.global	emw3080_mqtt_init
+ 1186              		.syntax unified
+ 1187              		.thumb
+ 1188              		.thumb_func
+ 1189              		.fpu fpv4-sp-d16
+ 1191              	emw3080_mqtt_init:
+ 1192              	.LFB15:
+ 165:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+ 166:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** bool_t emw3080_mqtt_init(void)
+ 167:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 1193              		.loc 1 167 1
+ 1194              		.cfi_startproc
+ 1195              		@ args = 0, pretend = 0, frame = 8
+ 1196              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1197 0000 80B5     		push	{r7, lr}
+ 1198              	.LCFI57:
+ 1199              		.cfi_def_cfa_offset 8
+ 1200              		.cfi_offset 7, -8
+ 1201              		.cfi_offset 14, -4
+ 1202 0002 84B0     		sub	sp, sp, #16
+ 1203              	.LCFI58:
+ 1204              		.cfi_def_cfa_offset 24
+ 1205 0004 02AF     		add	r7, sp, #8
+ 1206              	.LCFI59:
+ 1207              		.cfi_def_cfa 7, 16
+ 168:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+ 169:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_set_auth();
+ 1208              		.loc 1 169 5
+ 1209 0006 FFF7FEFF 		bl	emw3080_set_auth
+ 170:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_set_cid();
+ 1210              		.loc 1 170 5
+ 1211 000a FFF7FEFF 		bl	emw3080_set_cid
+ 171:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_set_sock();
+ 1212              		.loc 1 171 5
+ 1213 000e FFF7FEFF 		bl	emw3080_set_sock
+ 172:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+MQTTCAVERIFY=OFF,OFF\r");
+ 1214              		.loc 1 172 5
+ 1215 0012 1648     		ldr	r0, .L63
+ 1216 0014 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 173:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+MQTTSSL=OFF\r");
+ 1217              		.loc 1 173 5
+ 1218 0018 1548     		ldr	r0, .L63+4
+ 1219 001a FFF7FEFF 		bl	emw3080_atcmd_ok
+ 174:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+MQTTRECONN=ON\r");
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 27
+
+
+ 1220              		.loc 1 174 5
+ 1221 001e 1548     		ldr	r0, .L63+8
+ 1222 0020 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 175:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+MQTTAUTOSTART=OFF\r");
+ 1223              		.loc 1 175 5
+ 1224 0024 1448     		ldr	r0, .L63+12
+ 1225 0026 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 176:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+MQTTKEEPALIVE=120\r");
+ 1226              		.loc 1 176 5
+ 1227 002a 1448     		ldr	r0, .L63+16
+ 1228 002c FFF7FEFF 		bl	emw3080_atcmd_ok
+ 177:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_atcmd_ok("AT+MQTTEVENT=ON\r");
+ 1229              		.loc 1 177 5
+ 1230 0030 1348     		ldr	r0, .L63+20
+ 1231 0032 FFF7FEFF 		bl	emw3080_atcmd_ok
+ 178:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd("AT+MQTTSTART\r", "+MQTTEVENT:CONNECT,SUCCESS");
+ 1232              		.loc 1 178 11
+ 1233 0036 1349     		ldr	r1, .L63+24
+ 1234 0038 1348     		ldr	r0, .L63+28
+ 1235 003a FFF7FEFF 		bl	emw3080_atcmd
+ 1236 003e 7860     		str	r0, [r7, #4]
+ 179:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     if (!ret)
+ 1237              		.loc 1 179 8
+ 1238 0040 7B68     		ldr	r3, [r7, #4]
+ 1239 0042 002B     		cmp	r3, #0
+ 1240 0044 01D1     		bne	.L61
+ 180:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         return ret;
+ 1241              		.loc 1 180 16
+ 1242 0046 7B68     		ldr	r3, [r7, #4]
+ 1243 0048 0CE0     		b	.L62
+ 1244              	.L61:
+ 181:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_set_pub();
+ 1245              		.loc 1 181 5
+ 1246 004a FFF7FEFF 		bl	emw3080_set_pub
+ 182:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     emw3080_sub_command();
+ 1247              		.loc 1 182 5
+ 1248 004e FFF7FEFF 		bl	emw3080_sub_command
+ 183:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     at_oobregister("emw3080rcv", emw3080_cmd_index, strlen(emw3080_cmd_index), emw3080_rcvdeal, NUL
+ 1249              		.loc 1 183 5
+ 1250 0052 0023     		movs	r3, #0
+ 1251 0054 0093     		str	r3, [sp]
+ 1252 0056 0D4B     		ldr	r3, .L63+32
+ 1253 0058 0D22     		movs	r2, #13
+ 1254 005a 0D49     		ldr	r1, .L63+36
+ 1255 005c 0D48     		ldr	r0, .L63+40
+ 1256 005e FFF7FEFF 		bl	at_oobregister
+ 184:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 1257              		.loc 1 184 12
+ 1258 0062 7B68     		ldr	r3, [r7, #4]
+ 1259              	.L62:
+ 185:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 1260              		.loc 1 185 1
+ 1261 0064 1846     		mov	r0, r3
+ 1262 0066 0837     		adds	r7, r7, #8
+ 1263              	.LCFI60:
+ 1264              		.cfi_def_cfa_offset 8
+ 1265 0068 BD46     		mov	sp, r7
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 28
+
+
+ 1266              	.LCFI61:
+ 1267              		.cfi_def_cfa_register 13
+ 1268              		@ sp needed
+ 1269 006a 80BD     		pop	{r7, pc}
+ 1270              	.L64:
+ 1271              		.align	2
+ 1272              	.L63:
+ 1273 006c 5C020000 		.word	.LC23
+ 1274 0070 78020000 		.word	.LC24
+ 1275 0074 88020000 		.word	.LC25
+ 1276 0078 9C020000 		.word	.LC26
+ 1277 007c B4020000 		.word	.LC27
+ 1278 0080 CC020000 		.word	.LC28
+ 1279 0084 E0020000 		.word	.LC29
+ 1280 0088 FC020000 		.word	.LC30
+ 1281 008c 00000000 		.word	emw3080_rcvdeal
+ 1282 0090 0C030000 		.word	.LC31
+ 1283 0094 1C030000 		.word	.LC32
+ 1284              		.cfi_endproc
+ 1285              	.LFE15:
+ 1287              		.section	.rodata
+ 1288 0327 00       		.align	2
+ 1289              	.LC33:
+ 1290 0328 41542B4D 		.ascii	"AT+MQTTSEND=%d\015\000"
+ 1290      51545453 
+ 1290      454E443D 
+ 1290      25640D00 
+ 1291              		.align	2
+ 1292              	.LC34:
+ 1293 0338 3E00     		.ascii	">\000"
+ 1294 033a 0000     		.align	2
+ 1295              	.LC35:
+ 1296 033c 2B4D5154 		.ascii	"+MQTTEVENT:PUBLISH,SUCCESS\000"
+ 1296      54455645 
+ 1296      4E543A50 
+ 1296      55424C49 
+ 1296      53482C53 
+ 1297              		.section	.text.emw3080_publish,"ax",%progbits
+ 1298              		.align	1
+ 1299              		.global	emw3080_publish
+ 1300              		.syntax unified
+ 1301              		.thumb
+ 1302              		.thumb_func
+ 1303              		.fpu fpv4-sp-d16
+ 1305              	emw3080_publish:
+ 1306              	.LFB16:
+ 186:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** 
+ 187:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** bool_t emw3080_publish(const char *payload)
+ 188:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** {
+ 1307              		.loc 1 188 1
+ 1308              		.cfi_startproc
+ 1309              		@ args = 0, pretend = 0, frame = 528
+ 1310              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1311 0000 80B5     		push	{r7, lr}
+ 1312              	.LCFI62:
+ 1313              		.cfi_def_cfa_offset 8
+ 1314              		.cfi_offset 7, -8
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 29
+
+
+ 1315              		.cfi_offset 14, -4
+ 1316 0002 ADF5047D 		sub	sp, sp, #528
+ 1317              	.LCFI63:
+ 1318              		.cfi_def_cfa_offset 536
+ 1319 0006 00AF     		add	r7, sp, #0
+ 1320              	.LCFI64:
+ 1321              		.cfi_def_cfa_register 7
+ 1322 0008 3B1D     		adds	r3, r7, #4
+ 1323 000a 1860     		str	r0, [r3]
+ 189:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     bool_t ret;
+ 190:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     char cmd[emw3080_cmd_buflen];
+ 191:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)memset(cmd, 0, emw3080_cmd_buflen);
+ 1324              		.loc 1 191 11
+ 1325 000c 07F10C03 		add	r3, r7, #12
+ 1326 0010 4FF40072 		mov	r2, #512
+ 1327 0014 0021     		movs	r1, #0
+ 1328 0016 1846     		mov	r0, r3
+ 1329 0018 FFF7FEFF 		bl	memset
+ 192:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     (void)snprintf(cmd, emw3080_cmd_buflen, "AT+MQTTSEND=%d\r", strlen(payload));
+ 1330              		.loc 1 192 11
+ 1331 001c 3B1D     		adds	r3, r7, #4
+ 1332 001e 1868     		ldr	r0, [r3]
+ 1333 0020 FFF7FEFF 		bl	strlen
+ 1334 0024 0346     		mov	r3, r0
+ 1335 0026 07F10C00 		add	r0, r7, #12
+ 1336 002a 0F4A     		ldr	r2, .L68
+ 1337 002c 4FF40071 		mov	r1, #512
+ 1338 0030 FFF7FEFF 		bl	snprintf
+ 193:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     ret = emw3080_atcmd(cmd, ">");
+ 1339              		.loc 1 193 11
+ 1340 0034 07F10C03 		add	r3, r7, #12
+ 1341 0038 0C49     		ldr	r1, .L68+4
+ 1342 003a 1846     		mov	r0, r3
+ 1343 003c FFF7FEFF 		bl	emw3080_atcmd
+ 1344 0040 C7F80C02 		str	r0, [r7, #524]
+ 194:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     if (ret)
+ 1345              		.loc 1 194 8
+ 1346 0044 D7F80C32 		ldr	r3, [r7, #524]
+ 1347 0048 002B     		cmp	r3, #0
+ 1348 004a 06D0     		beq	.L66
+ 195:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****         ret = emw3080_atcmd(payload, "+MQTTEVENT:PUBLISH,SUCCESS");
+ 1349              		.loc 1 195 15
+ 1350 004c 3B1D     		adds	r3, r7, #4
+ 1351 004e 0849     		ldr	r1, .L68+8
+ 1352 0050 1868     		ldr	r0, [r3]
+ 1353 0052 FFF7FEFF 		bl	emw3080_atcmd
+ 1354 0056 C7F80C02 		str	r0, [r7, #524]
+ 1355              	.L66:
+ 196:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c ****     return ret;
+ 1356              		.loc 1 196 12
+ 1357 005a D7F80C32 		ldr	r3, [r7, #524]
+ 197:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080\EMW3080.c **** }
+ 1358              		.loc 1 197 1
+ 1359 005e 1846     		mov	r0, r3
+ 1360 0060 07F50477 		add	r7, r7, #528
+ 1361              	.LCFI65:
+ 1362              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 30
+
+
+ 1363 0064 BD46     		mov	sp, r7
+ 1364              	.LCFI66:
+ 1365              		.cfi_def_cfa_register 13
+ 1366              		@ sp needed
+ 1367 0066 80BD     		pop	{r7, pc}
+ 1368              	.L69:
+ 1369              		.align	2
+ 1370              	.L68:
+ 1371 0068 28030000 		.word	.LC33
+ 1372 006c 38030000 		.word	.LC34
+ 1373 0070 3C030000 		.word	.LC35
+ 1374              		.cfi_endproc
+ 1375              	.LFE16:
+ 1377              		.section	.rodata.__FUNCTION__.7012,"a"
+ 1378              		.align	2
+ 1381              	__FUNCTION__.7012:
+ 1382 0000 656D7733 		.ascii	"emw3080_rcvdeal\000"
+ 1382      3038305F 
+ 1382      72637664 
+ 1382      65616C00 
+ 1383              		.text
+ 1384              	.Letext0:
+ 1385              		.file 2 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-none-eabi\\9.2.1\\includ
+ 1386              		.file 3 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_defa
+ 1387              		.file 4 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\lock.h"
+ 1388              		.file 5 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_types.h"
+ 1389              		.file 6 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\reent.h"
+ 1390              		.file 7 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h
+ 1391              		.file 8 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/osal/osal_types.h"
+ 1392              		.file 9 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/emw3080/EMW3080.h"
+ 1393              		.file 10 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/inc/link_log.h"
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 31
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 EMW3080.c
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:18     .text.emw3080_atcmd:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:25     .text.emw3080_atcmd:00000000 emw3080_atcmd
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:86     .text.emw3080_atcmd_response:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:92     .text.emw3080_atcmd_response:00000000 emw3080_atcmd_response
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:154    .rodata:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:158    .text.emw3080_atcmd_ok:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:164    .text.emw3080_atcmd_ok:00000000 emw3080_atcmd_ok
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:202    .text.emw3080_atcmd_ok:0000001c $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:220    .text.emw3080_wifi_connect:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:226    .text.emw3080_wifi_connect:00000000 emw3080_wifi_connect
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:278    .text.emw3080_wifi_connect:00000044 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:297    .text.emw3080_set_auth:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:303    .text.emw3080_set_auth:00000000 emw3080_set_auth
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:354    .text.emw3080_set_auth:00000044 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:368    .text.emw3080_set_cid:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:374    .text.emw3080_set_cid:00000000 emw3080_set_cid
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:423    .text.emw3080_set_cid:00000040 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:436    .text.emw3080_set_sock:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:442    .text.emw3080_set_sock:00000000 emw3080_set_sock
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:491    .text.emw3080_set_sock:00000040 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:502    .text.emw3080_set_pub:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:508    .text.emw3080_set_pub:00000000 emw3080_set_pub
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:557    .text.emw3080_set_pub:00000040 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:570    .text.emw3080_sub_command:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:576    .text.emw3080_sub_command:00000000 emw3080_sub_command
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:626    .text.emw3080_sub_command:00000040 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:641    .text.emw3080_rcvdeal:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:648    .text.emw3080_rcvdeal:00000000 emw3080_rcvdeal
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:756    .text.emw3080_rcvdeal:00000098 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1381   .rodata.__FUNCTION__.7012:00000000 __FUNCTION__.7012
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:778    .text.emw3080_wifi_init:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:785    .text.emw3080_wifi_init:00000000 emw3080_wifi_init
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:823    .text.emw3080_wifi_init:00000030 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:838    .text.emw3080_ntp:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:845    .text.emw3080_ntp:00000000 emw3080_ntp
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1146   .text.emw3080_ntp:0000022c $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1184   .text.emw3080_mqtt_init:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1191   .text.emw3080_mqtt_init:00000000 emw3080_mqtt_init
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1273   .text.emw3080_mqtt_init:0000006c $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1298   .text.emw3080_publish:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1305   .text.emw3080_publish:00000000 emw3080_publish
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1371   .text.emw3080_publish:00000068 $d
+C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s:1378   .rodata.__FUNCTION__.7012:00000000 $d
+
+UNDEFINED SYMBOLS
+strlen
+at_command
+memset
+snprintf
+link_log_level_get
+link_log_level_name
+osal_sys_time
+printf
+strchr
+strcpy
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccN8OSl8.s 			page 32
+
+
+osal_semp_post
+emw3080_rcv_data
+mqtt_rcv_sync
+osal_task_sleep
+at_oobregister

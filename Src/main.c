@@ -78,7 +78,6 @@ VOID HardWare_Init(VOID)
 	LCD_ShowString(20, 90, 240, 16, 16, "BearPi-IoT Develop Board");
 	LCD_ShowString(20, 130, 240, 16, 16, "Powerd by Huawei LiteOS!");
 	LCD_ShowString(30, 170, 240, 16, 16, "Connecting NET......");
-	
 }
 
 extern int link_main(void *args);
@@ -114,9 +113,8 @@ int main(void)
 
     extern void shell_uart_init(int baud);
     shell_uart_init(115200);
-
     link_test();
-
+    
     (void)LOS_Start();
     return 0;
 }

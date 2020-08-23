@@ -71,6 +71,6 @@ C_INCLUDES += $(USER_INC)
 # C defines
 C_DEFS +=  -D USE_HAL_DRIVER -D STM32L431xx -D NDEBUG
 
-include $(TARGET_DIR)/Demos/user_demo.mk
+include $(TARGET_DIR)/user_main/user_main.mk
 
                  

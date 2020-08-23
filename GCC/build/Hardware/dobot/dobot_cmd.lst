@@ -1,0 +1,637 @@
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"dobot_cmd.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.bss.txbuffer,"aw",%nobits
+  18              		.align	2
+  21              	txbuffer:
+  22 0000 00000000 		.space	1024
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  22      00000000 
+  23              		.section	.bss.txlen,"aw",%nobits
+  26              	txlen:
+  27 0000 00       		.space	1
+  28              		.section	.text.SetPTPCoordinateParams,"ax",%progbits
+  29              		.align	1
+  30              		.global	SetPTPCoordinateParams
+  31              		.arch armv7e-m
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  35              		.fpu fpv4-sp-d16
+  37              	SetPTPCoordinateParams:
+  38              	.LFB287:
+  39              		.file 1 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot/dobot_cmd.c"
+   1:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** #include <stdio.h>
+   2:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** #include <string.h>
+   3:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** #include <dobot_cmd.h>
+   4:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** #include <dobot_protocol.h>
+   5:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** #include <usart.h>
+   6:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+   7:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** #define TX_BUFFER_SIZE 1024
+   8:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** static uint8_t txbuffer[TX_BUFFER_SIZE];
+   9:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** static uint8_t txlen;
+  10:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  11:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** static void SendCommand(const Message *message);
+  12:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  13:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** void SetPTPCoordinateParams(const PTPCoordinateParams *ptpCoordinateParams)
+  14:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** {
+  40              		.loc 1 14 1
+  41              		.cfi_startproc
+  42              		@ args = 0, pretend = 0, frame = 184
+  43              		@ frame_needed = 1, uses_anonymous_args = 0
+  44 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 2
+
+
+  45              	.LCFI0:
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 7, -8
+  48              		.cfi_offset 14, -4
+  49 0002 AEB0     		sub	sp, sp, #184
+  50              	.LCFI1:
+  51              		.cfi_def_cfa_offset 192
+  52 0004 00AF     		add	r7, sp, #0
+  53              	.LCFI2:
+  54              		.cfi_def_cfa_register 7
+  55 0006 7860     		str	r0, [r7, #4]
+  15:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     Message tempMessage;
+  16:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  17:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memset(&tempMessage, 0, sizeof(Message));
+  56              		.loc 1 17 5
+  57 0008 07F10C03 		add	r3, r7, #12
+  58 000c A922     		movs	r2, #169
+  59 000e 0021     		movs	r1, #0
+  60 0010 1846     		mov	r0, r3
+  61 0012 FFF7FEFF 		bl	memset
+  18:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.id = 81;
+  62              		.loc 1 18 20
+  63 0016 5123     		movs	r3, #81
+  64 0018 3B73     		strb	r3, [r7, #12]
+  19:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.paramsLen = sizeof(PTPCoordinateParams);
+  65              		.loc 1 19 27
+  66 001a 1023     		movs	r3, #16
+  67 001c 7B73     		strb	r3, [r7, #13]
+  20:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memcpy(tempMessage.params, (uint8_t *)ptpCoordinateParams, tempMessage.paramsLen);
+  68              		.loc 1 20 75
+  69 001e 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+  70              		.loc 1 20 5
+  71 0020 1A46     		mov	r2, r3
+  72 0022 07F10C03 		add	r3, r7, #12
+  73 0026 0233     		adds	r3, r3, #2
+  74 0028 7968     		ldr	r1, [r7, #4]
+  75 002a 1846     		mov	r0, r3
+  76 002c FFF7FEFF 		bl	memcpy
+  21:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     SendCommand(&tempMessage);
+  77              		.loc 1 21 5
+  78 0030 07F10C03 		add	r3, r7, #12
+  79 0034 1846     		mov	r0, r3
+  80 0036 FFF7FEFF 		bl	SendCommand
+  22:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** }
+  81              		.loc 1 22 1
+  82 003a 00BF     		nop
+  83 003c B837     		adds	r7, r7, #184
+  84              	.LCFI3:
+  85              		.cfi_def_cfa_offset 8
+  86 003e BD46     		mov	sp, r7
+  87              	.LCFI4:
+  88              		.cfi_def_cfa_register 13
+  89              		@ sp needed
+  90 0040 80BD     		pop	{r7, pc}
+  91              		.cfi_endproc
+  92              	.LFE287:
+  94              		.section	.text.SetPTPCommonParams,"ax",%progbits
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 3
+
+
+  95              		.align	1
+  96              		.global	SetPTPCommonParams
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 100              		.fpu fpv4-sp-d16
+ 102              	SetPTPCommonParams:
+ 103              	.LFB288:
+  23:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  24:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** void SetPTPCommonParams(const PTPCommonParams *ptpCommonParams)
+  25:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** {
+ 104              		.loc 1 25 1
+ 105              		.cfi_startproc
+ 106              		@ args = 0, pretend = 0, frame = 184
+ 107              		@ frame_needed = 1, uses_anonymous_args = 0
+ 108 0000 80B5     		push	{r7, lr}
+ 109              	.LCFI5:
+ 110              		.cfi_def_cfa_offset 8
+ 111              		.cfi_offset 7, -8
+ 112              		.cfi_offset 14, -4
+ 113 0002 AEB0     		sub	sp, sp, #184
+ 114              	.LCFI6:
+ 115              		.cfi_def_cfa_offset 192
+ 116 0004 00AF     		add	r7, sp, #0
+ 117              	.LCFI7:
+ 118              		.cfi_def_cfa_register 7
+ 119 0006 7860     		str	r0, [r7, #4]
+  26:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     Message tempMessage;
+  27:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  28:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memset(&tempMessage, 0, sizeof(Message));
+ 120              		.loc 1 28 5
+ 121 0008 07F10C03 		add	r3, r7, #12
+ 122 000c A922     		movs	r2, #169
+ 123 000e 0021     		movs	r1, #0
+ 124 0010 1846     		mov	r0, r3
+ 125 0012 FFF7FEFF 		bl	memset
+  29:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.id = 83;
+ 126              		.loc 1 29 20
+ 127 0016 5323     		movs	r3, #83
+ 128 0018 3B73     		strb	r3, [r7, #12]
+  30:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.paramsLen = sizeof(PTPCommonParams);
+ 129              		.loc 1 30 27
+ 130 001a 0823     		movs	r3, #8
+ 131 001c 7B73     		strb	r3, [r7, #13]
+  31:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memcpy(tempMessage.params, (uint8_t *)ptpCommonParams, tempMessage.paramsLen);
+ 132              		.loc 1 31 71
+ 133 001e 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 134              		.loc 1 31 5
+ 135 0020 1A46     		mov	r2, r3
+ 136 0022 07F10C03 		add	r3, r7, #12
+ 137 0026 0233     		adds	r3, r3, #2
+ 138 0028 7968     		ldr	r1, [r7, #4]
+ 139 002a 1846     		mov	r0, r3
+ 140 002c FFF7FEFF 		bl	memcpy
+  32:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     SendCommand(&tempMessage);
+ 141              		.loc 1 32 5
+ 142 0030 07F10C03 		add	r3, r7, #12
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 4
+
+
+ 143 0034 1846     		mov	r0, r3
+ 144 0036 FFF7FEFF 		bl	SendCommand
+  33:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** }
+ 145              		.loc 1 33 1
+ 146 003a 00BF     		nop
+ 147 003c B837     		adds	r7, r7, #184
+ 148              	.LCFI8:
+ 149              		.cfi_def_cfa_offset 8
+ 150 003e BD46     		mov	sp, r7
+ 151              	.LCFI9:
+ 152              		.cfi_def_cfa_register 13
+ 153              		@ sp needed
+ 154 0040 80BD     		pop	{r7, pc}
+ 155              		.cfi_endproc
+ 156              	.LFE288:
+ 158              		.section	.text.SetPTPCmd,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	SetPTPCmd
+ 161              		.syntax unified
+ 162              		.thumb
+ 163              		.thumb_func
+ 164              		.fpu fpv4-sp-d16
+ 166              	SetPTPCmd:
+ 167              	.LFB289:
+  34:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  35:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** void SetPTPCmd(const PTPCmd *ptpCmd)
+  36:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** {
+ 168              		.loc 1 36 1
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 184
+ 171              		@ frame_needed = 1, uses_anonymous_args = 0
+ 172 0000 80B5     		push	{r7, lr}
+ 173              	.LCFI10:
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 7, -8
+ 176              		.cfi_offset 14, -4
+ 177 0002 AEB0     		sub	sp, sp, #184
+ 178              	.LCFI11:
+ 179              		.cfi_def_cfa_offset 192
+ 180 0004 00AF     		add	r7, sp, #0
+ 181              	.LCFI12:
+ 182              		.cfi_def_cfa_register 7
+ 183 0006 7860     		str	r0, [r7, #4]
+  37:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     Message tempMessage;
+  38:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  39:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memset(&tempMessage, 0, sizeof(Message));
+ 184              		.loc 1 39 5
+ 185 0008 07F10C03 		add	r3, r7, #12
+ 186 000c A922     		movs	r2, #169
+ 187 000e 0021     		movs	r1, #0
+ 188 0010 1846     		mov	r0, r3
+ 189 0012 FFF7FEFF 		bl	memset
+  40:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.id = 84;
+ 190              		.loc 1 40 20
+ 191 0016 5423     		movs	r3, #84
+ 192 0018 3B73     		strb	r3, [r7, #12]
+  41:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.paramsLen = sizeof(PTPCmd);
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 5
+
+
+ 193              		.loc 1 41 27
+ 194 001a 1123     		movs	r3, #17
+ 195 001c 7B73     		strb	r3, [r7, #13]
+  42:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memcpy(tempMessage.params, (uint8_t *)ptpCmd, tempMessage.paramsLen);
+ 196              		.loc 1 42 62
+ 197 001e 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 198              		.loc 1 42 5
+ 199 0020 1A46     		mov	r2, r3
+ 200 0022 07F10C03 		add	r3, r7, #12
+ 201 0026 0233     		adds	r3, r3, #2
+ 202 0028 7968     		ldr	r1, [r7, #4]
+ 203 002a 1846     		mov	r0, r3
+ 204 002c FFF7FEFF 		bl	memcpy
+  43:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     SendCommand(&tempMessage);
+ 205              		.loc 1 43 5
+ 206 0030 07F10C03 		add	r3, r7, #12
+ 207 0034 1846     		mov	r0, r3
+ 208 0036 FFF7FEFF 		bl	SendCommand
+  44:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** }
+ 209              		.loc 1 44 1
+ 210 003a 00BF     		nop
+ 211 003c B837     		adds	r7, r7, #184
+ 212              	.LCFI13:
+ 213              		.cfi_def_cfa_offset 8
+ 214 003e BD46     		mov	sp, r7
+ 215              	.LCFI14:
+ 216              		.cfi_def_cfa_register 13
+ 217              		@ sp needed
+ 218 0040 80BD     		pop	{r7, pc}
+ 219              		.cfi_endproc
+ 220              	.LFE289:
+ 222              		.section	.text.CtrEndEffectorGripper,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	CtrEndEffectorGripper
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 228              		.fpu fpv4-sp-d16
+ 230              	CtrEndEffectorGripper:
+ 231              	.LFB290:
+  45:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  46:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** void CtrEndEffectorGripper(uint8_t control, uint8_t grip)
+  47:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** {
+ 232              		.loc 1 47 1
+ 233              		.cfi_startproc
+ 234              		@ args = 0, pretend = 0, frame = 184
+ 235              		@ frame_needed = 1, uses_anonymous_args = 0
+ 236 0000 80B5     		push	{r7, lr}
+ 237              	.LCFI15:
+ 238              		.cfi_def_cfa_offset 8
+ 239              		.cfi_offset 7, -8
+ 240              		.cfi_offset 14, -4
+ 241 0002 AEB0     		sub	sp, sp, #184
+ 242              	.LCFI16:
+ 243              		.cfi_def_cfa_offset 192
+ 244 0004 00AF     		add	r7, sp, #0
+ 245              	.LCFI17:
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 6
+
+
+ 246              		.cfi_def_cfa_register 7
+ 247 0006 0346     		mov	r3, r0
+ 248 0008 0A46     		mov	r2, r1
+ 249 000a FB71     		strb	r3, [r7, #7]
+ 250 000c 1346     		mov	r3, r2
+ 251 000e BB71     		strb	r3, [r7, #6]
+  48:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     Message tempMessage;
+  49:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  50:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memset(&tempMessage, 0, sizeof(Message));
+ 252              		.loc 1 50 5
+ 253 0010 07F10C03 		add	r3, r7, #12
+ 254 0014 A922     		movs	r2, #169
+ 255 0016 0021     		movs	r1, #0
+ 256 0018 1846     		mov	r0, r3
+ 257 001a FFF7FEFF 		bl	memset
+  51:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.id = 63;
+ 258              		.loc 1 51 20
+ 259 001e 3F23     		movs	r3, #63
+ 260 0020 3B73     		strb	r3, [r7, #12]
+  52:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.paramsLen = 2;
+ 261              		.loc 1 52 27
+ 262 0022 0223     		movs	r3, #2
+ 263 0024 7B73     		strb	r3, [r7, #13]
+  53:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.params[0] = control;
+ 264              		.loc 1 53 27
+ 265 0026 FB79     		ldrb	r3, [r7, #7]
+ 266 0028 BB73     		strb	r3, [r7, #14]
+  54:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     tempMessage.params[1] = grip;
+ 267              		.loc 1 54 27
+ 268 002a BB79     		ldrb	r3, [r7, #6]
+ 269 002c FB73     		strb	r3, [r7, #15]
+  55:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     SendCommand(&tempMessage);
+ 270              		.loc 1 55 5
+ 271 002e 07F10C03 		add	r3, r7, #12
+ 272 0032 1846     		mov	r0, r3
+ 273 0034 FFF7FEFF 		bl	SendCommand
+  56:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** }
+ 274              		.loc 1 56 1
+ 275 0038 00BF     		nop
+ 276 003a B837     		adds	r7, r7, #184
+ 277              	.LCFI18:
+ 278              		.cfi_def_cfa_offset 8
+ 279 003c BD46     		mov	sp, r7
+ 280              	.LCFI19:
+ 281              		.cfi_def_cfa_register 13
+ 282              		@ sp needed
+ 283 003e 80BD     		pop	{r7, pc}
+ 284              		.cfi_endproc
+ 285              	.LFE290:
+ 287              		.section	.text.SendCommand,"ax",%progbits
+ 288              		.align	1
+ 289              		.syntax unified
+ 290              		.thumb
+ 291              		.thumb_func
+ 292              		.fpu fpv4-sp-d16
+ 294              	SendCommand:
+ 295              	.LFB291:
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 7
+
+
+  57:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  58:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** static void SendCommand(const Message *message)
+  59:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** {
+ 296              		.loc 1 59 1
+ 297              		.cfi_startproc
+ 298              		@ args = 0, pretend = 0, frame = 16
+ 299              		@ frame_needed = 1, uses_anonymous_args = 0
+ 300 0000 80B5     		push	{r7, lr}
+ 301              	.LCFI20:
+ 302              		.cfi_def_cfa_offset 8
+ 303              		.cfi_offset 7, -8
+ 304              		.cfi_offset 14, -4
+ 305 0002 84B0     		sub	sp, sp, #16
+ 306              	.LCFI21:
+ 307              		.cfi_def_cfa_offset 24
+ 308 0004 00AF     		add	r7, sp, #0
+ 309              	.LCFI22:
+ 310              		.cfi_def_cfa_register 7
+ 311 0006 7860     		str	r0, [r7, #4]
+  60:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     memset(txbuffer, 0, TX_BUFFER_SIZE);
+ 312              		.loc 1 60 5
+ 313 0008 4FF48062 		mov	r2, #1024
+ 314 000c 0021     		movs	r1, #0
+ 315 000e 3E48     		ldr	r0, .L8
+ 316 0010 FFF7FEFF 		bl	memset
+  61:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     txlen = 0;
+ 317              		.loc 1 61 11
+ 318 0014 3D4B     		ldr	r3, .L8+4
+ 319 0016 0022     		movs	r2, #0
+ 320 0018 1A70     		strb	r2, [r3]
+  62:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 
+  63:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     uint8_t checksum = 0x03;
+ 321              		.loc 1 63 13
+ 322 001a 0323     		movs	r3, #3
+ 323 001c FB73     		strb	r3, [r7, #15]
+  64:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     checksum += message->id;
+ 324              		.loc 1 64 24
+ 325 001e 7B68     		ldr	r3, [r7, #4]
+ 326 0020 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 327              		.loc 1 64 14
+ 328 0022 FB7B     		ldrb	r3, [r7, #15]
+ 329 0024 1344     		add	r3, r3, r2
+ 330 0026 FB73     		strb	r3, [r7, #15]
+  65:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     txbuffer[txlen++] = SYNC_BYTE;
+ 331              		.loc 1 65 19
+ 332 0028 384B     		ldr	r3, .L8+4
+ 333 002a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 334 002c 5A1C     		adds	r2, r3, #1
+ 335 002e D1B2     		uxtb	r1, r2
+ 336 0030 364A     		ldr	r2, .L8+4
+ 337 0032 1170     		strb	r1, [r2]
+ 338 0034 1A46     		mov	r2, r3
+ 339              		.loc 1 65 23
+ 340 0036 344B     		ldr	r3, .L8
+ 341 0038 AA21     		movs	r1, #170
+ 342 003a 9954     		strb	r1, [r3, r2]
+  66:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     txbuffer[txlen++] = SYNC_BYTE;
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 8
+
+
+ 343              		.loc 1 66 19
+ 344 003c 334B     		ldr	r3, .L8+4
+ 345 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 346 0040 5A1C     		adds	r2, r3, #1
+ 347 0042 D1B2     		uxtb	r1, r2
+ 348 0044 314A     		ldr	r2, .L8+4
+ 349 0046 1170     		strb	r1, [r2]
+ 350 0048 1A46     		mov	r2, r3
+ 351              		.loc 1 66 23
+ 352 004a 2F4B     		ldr	r3, .L8
+ 353 004c AA21     		movs	r1, #170
+ 354 004e 9954     		strb	r1, [r3, r2]
+  67:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     txbuffer[txlen++] = message->paramsLen + 2;
+ 355              		.loc 1 67 32
+ 356 0050 7B68     		ldr	r3, [r7, #4]
+ 357 0052 5A78     		ldrb	r2, [r3, #1]	@ zero_extendqisi2
+ 358              		.loc 1 67 19
+ 359 0054 2D4B     		ldr	r3, .L8+4
+ 360 0056 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 361 0058 591C     		adds	r1, r3, #1
+ 362 005a C8B2     		uxtb	r0, r1
+ 363 005c 2B49     		ldr	r1, .L8+4
+ 364 005e 0870     		strb	r0, [r1]
+ 365 0060 1946     		mov	r1, r3
+ 366              		.loc 1 67 44
+ 367 0062 931C     		adds	r3, r2, #2
+ 368 0064 DAB2     		uxtb	r2, r3
+ 369              		.loc 1 67 23
+ 370 0066 284B     		ldr	r3, .L8
+ 371 0068 5A54     		strb	r2, [r3, r1]
+  68:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     txbuffer[txlen++] = message->id;
+ 372              		.loc 1 68 19
+ 373 006a 284B     		ldr	r3, .L8+4
+ 374 006c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 375 006e 5A1C     		adds	r2, r3, #1
+ 376 0070 D1B2     		uxtb	r1, r2
+ 377 0072 264A     		ldr	r2, .L8+4
+ 378 0074 1170     		strb	r1, [r2]
+ 379 0076 1A46     		mov	r2, r3
+ 380              		.loc 1 68 32
+ 381 0078 7B68     		ldr	r3, [r7, #4]
+ 382 007a 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 383              		.loc 1 68 23
+ 384 007c 224B     		ldr	r3, .L8
+ 385 007e 9954     		strb	r1, [r3, r2]
+  69:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     txbuffer[txlen++] = 0x03;
+ 386              		.loc 1 69 19
+ 387 0080 224B     		ldr	r3, .L8+4
+ 388 0082 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 389 0084 5A1C     		adds	r2, r3, #1
+ 390 0086 D1B2     		uxtb	r1, r2
+ 391 0088 204A     		ldr	r2, .L8+4
+ 392 008a 1170     		strb	r1, [r2]
+ 393 008c 1A46     		mov	r2, r3
+ 394              		.loc 1 69 23
+ 395 008e 1E4B     		ldr	r3, .L8
+ 396 0090 0321     		movs	r1, #3
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 9
+
+
+ 397 0092 9954     		strb	r1, [r3, r2]
+ 398              	.LBB2:
+  70:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     for (uint8_t i = 0; i < message->paramsLen; i++)
+ 399              		.loc 1 70 18
+ 400 0094 0023     		movs	r3, #0
+ 401 0096 BB73     		strb	r3, [r7, #14]
+ 402              		.loc 1 70 5
+ 403 0098 16E0     		b	.L6
+ 404              	.L7:
+  71:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     {
+  72:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****         txbuffer[txlen++] = message->params[i];
+ 405              		.loc 1 72 44 discriminator 3
+ 406 009a BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 407              		.loc 1 72 23 discriminator 3
+ 408 009c 1B4B     		ldr	r3, .L8+4
+ 409 009e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 410 00a0 591C     		adds	r1, r3, #1
+ 411 00a2 C8B2     		uxtb	r0, r1
+ 412 00a4 1949     		ldr	r1, .L8+4
+ 413 00a6 0870     		strb	r0, [r1]
+ 414 00a8 1946     		mov	r1, r3
+ 415              		.loc 1 72 44 discriminator 3
+ 416 00aa 7B68     		ldr	r3, [r7, #4]
+ 417 00ac 1344     		add	r3, r3, r2
+ 418 00ae 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 419              		.loc 1 72 27 discriminator 3
+ 420 00b0 154B     		ldr	r3, .L8
+ 421 00b2 5A54     		strb	r2, [r3, r1]
+  73:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****         checksum += message->params[i];
+ 422              		.loc 1 73 36 discriminator 3
+ 423 00b4 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 424 00b6 7A68     		ldr	r2, [r7, #4]
+ 425 00b8 1344     		add	r3, r3, r2
+ 426 00ba 9A78     		ldrb	r2, [r3, #2]	@ zero_extendqisi2
+ 427              		.loc 1 73 18 discriminator 3
+ 428 00bc FB7B     		ldrb	r3, [r7, #15]
+ 429 00be 1344     		add	r3, r3, r2
+ 430 00c0 FB73     		strb	r3, [r7, #15]
+  70:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     for (uint8_t i = 0; i < message->paramsLen; i++)
+ 431              		.loc 1 70 50 discriminator 3
+ 432 00c2 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 433 00c4 0133     		adds	r3, r3, #1
+ 434 00c6 BB73     		strb	r3, [r7, #14]
+ 435              	.L6:
+  70:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     for (uint8_t i = 0; i < message->paramsLen; i++)
+ 436              		.loc 1 70 36 discriminator 1
+ 437 00c8 7B68     		ldr	r3, [r7, #4]
+ 438 00ca 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  70:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     for (uint8_t i = 0; i < message->paramsLen; i++)
+ 439              		.loc 1 70 5 discriminator 1
+ 440 00cc BA7B     		ldrb	r2, [r7, #14]	@ zero_extendqisi2
+ 441 00ce 9A42     		cmp	r2, r3
+ 442 00d0 E3D3     		bcc	.L7
+ 443              	.LBE2:
+  74:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     }
+  75:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** 	checksum = (uint8_t)(0 - checksum);
+ 444              		.loc 1 75 11
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 10
+
+
+ 445 00d2 FB7B     		ldrb	r3, [r7, #15]
+ 446 00d4 5B42     		rsbs	r3, r3, #0
+ 447 00d6 FB73     		strb	r3, [r7, #15]
+  76:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     txbuffer[txlen++] = checksum;
+ 448              		.loc 1 76 19
+ 449 00d8 0C4B     		ldr	r3, .L8+4
+ 450 00da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 451 00dc 5A1C     		adds	r2, r3, #1
+ 452 00de D1B2     		uxtb	r1, r2
+ 453 00e0 0A4A     		ldr	r2, .L8+4
+ 454 00e2 1170     		strb	r1, [r2]
+ 455 00e4 1946     		mov	r1, r3
+ 456              		.loc 1 76 23
+ 457 00e6 084A     		ldr	r2, .L8
+ 458 00e8 FB7B     		ldrb	r3, [r7, #15]
+ 459 00ea 5354     		strb	r3, [r2, r1]
+  77:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c ****     HAL_UART_Transmit(&huart3, txbuffer, txlen, 0xffff);
+ 460              		.loc 1 77 5
+ 461 00ec 074B     		ldr	r3, .L8+4
+ 462 00ee 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 463 00f0 9AB2     		uxth	r2, r3
+ 464 00f2 4FF6FF73 		movw	r3, #65535
+ 465 00f6 0449     		ldr	r1, .L8
+ 466 00f8 0548     		ldr	r0, .L8+8
+ 467 00fa FFF7FEFF 		bl	HAL_UART_Transmit
+  78:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot_cmd.c **** }
+ 468              		.loc 1 78 1
+ 469 00fe 00BF     		nop
+ 470 0100 1037     		adds	r7, r7, #16
+ 471              	.LCFI23:
+ 472              		.cfi_def_cfa_offset 8
+ 473 0102 BD46     		mov	sp, r7
+ 474              	.LCFI24:
+ 475              		.cfi_def_cfa_register 13
+ 476              		@ sp needed
+ 477 0104 80BD     		pop	{r7, pc}
+ 478              	.L9:
+ 479 0106 00BF     		.align	2
+ 480              	.L8:
+ 481 0108 00000000 		.word	txbuffer
+ 482 010c 00000000 		.word	txlen
+ 483 0110 00000000 		.word	huart3
+ 484              		.cfi_endproc
+ 485              	.LFE291:
+ 487              		.text
+ 488              	.Letext0:
+ 489              		.file 2 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_defa
+ 490              		.file 3 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\lock.h"
+ 491              		.file 4 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_types.h"
+ 492              		.file 5 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-none-eabi\\9.2.1\\includ
+ 493              		.file 6 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\reent.h"
+ 494              		.file 7 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h
+ 495              		.file 8 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot/dobot_cmd.h"
+ 496              		.file 9 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot/dobot_protocol.h"
+ 497              		.file 10 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_typedef.h"
+ 498              		.file 11 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/common/cmsis/core_cm4.h"
+ 499              		.file 12 "c:/Users/MI/Documents/IoTLink/HWCup/Inc/system_stm32l4xx.h"
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 11
+
+
+ 500              		.file 13 "c:/Users/MI/Documents/IoTLink/HWCup/Inc/stm32l431xx.h"
+ 501              		.file 14 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_config.h"
+ 502              		.file 15 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_err.h"
+ 503              		.file 16 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-m/include/los_hwi.h"
+ 504              		.file 17 "C:/Users/MI/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm32l
+ 505              		.file 18 "C:/Users/MI/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm32l
+ 506              		.file 19 "C:/Users/MI/.iotlink/sdk/IoT_LINK/drivers/third_party/ST/STM32L4xx_HAL_Driver/Inc/stm32l
+ 507              		.file 20 "c:/Users/MI/Documents/IoTLink/HWCup/Inc/usart.h"
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 dobot_cmd.c
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:18     .bss.txbuffer:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:21     .bss.txbuffer:00000000 txbuffer
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:26     .bss.txlen:00000000 txlen
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:27     .bss.txlen:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:29     .text.SetPTPCoordinateParams:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:37     .text.SetPTPCoordinateParams:00000000 SetPTPCoordinateParams
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:294    .text.SendCommand:00000000 SendCommand
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:95     .text.SetPTPCommonParams:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:102    .text.SetPTPCommonParams:00000000 SetPTPCommonParams
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:159    .text.SetPTPCmd:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:166    .text.SetPTPCmd:00000000 SetPTPCmd
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:223    .text.CtrEndEffectorGripper:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:230    .text.CtrEndEffectorGripper:00000000 CtrEndEffectorGripper
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:288    .text.SendCommand:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccNaSEbZ.s:481    .text.SendCommand:00000108 $d
+
+UNDEFINED SYMBOLS
+memset
+memcpy
+HAL_UART_Transmit
+huart3

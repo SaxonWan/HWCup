@@ -1,0 +1,764 @@
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"dobot.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.ChopSticks1,"a"
+  18              		.align	2
+  21              	ChopSticks1:
+  22 0000 01       		.byte	1
+  23 0001 7F493B43 		.4byte	1127958911
+  24 0005 6ABCA041 		.4byte	1101053034
+  25 0009 773EA641 		.4byte	1101414007
+  26 000d 8A8EFBC1 		.4byte	-1040478582
+  27 0011 02       		.byte	2
+  28 0012 8C493B43 		.4byte	1127958924
+  29 0016 6ABCA041 		.4byte	1101053034
+  30 001a D567DDC1 		.4byte	-1042454571
+  31 001e 8A8EFBC1 		.4byte	-1040478582
+  32 0022 02       		.byte	2
+  33 0023 79493B43 		.4byte	1127958905
+  34 0027 6ABCA041 		.4byte	1101053034
+  35 002b D645A142 		.4byte	1117865430
+  36 002f 8A8EFBC1 		.4byte	-1040478582
+  37              		.section	.rodata.ChopSticks2,"a"
+  38              		.align	2
+  41              	ChopSticks2:
+  42 0000 01       		.byte	1
+  43 0001 45C73F43 		.4byte	1128253253
+  44 0005 428F0DC2 		.4byte	-1039298750
+  45 0009 C2869540 		.4byte	1083541186
+  46 000d 8C39EDC1 		.4byte	-1041417844
+  47 0011 02       		.byte	2
+  48 0012 4CC73F43 		.4byte	1128253260
+  49 0016 428F0DC2 		.4byte	-1039298750
+  50 001a E8EAE9C1 		.4byte	-1041634584
+  51 001e 8C39EDC1 		.4byte	-1041417844
+  52 0022 02       		.byte	2
+  53 0023 7AC73F43 		.4byte	1128253306
+  54 0027 5C8F0DC2 		.4byte	-1039298724
+  55 002b 6085D942 		.4byte	1121551712
+  56 002f 8C39EDC1 		.4byte	-1041417844
+  57              		.section	.rodata.ChopSticksDes,"a"
+  58              		.align	2
+  61              	ChopSticksDes:
+  62 0000 01       		.byte	1
+  63 0001 1EF63343 		.4byte	1127478814
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 2
+
+
+  64 0005 58F95AC3 		.4byte	-1017448104
+  65 0009 1757F442 		.4byte	1123309335
+  66 000d EF49EAC1 		.4byte	-1041610257
+  67              		.section	.rodata.RedSauce1,"a"
+  68              		.align	2
+  71              	RedSauce1:
+  72 0000 01       		.byte	1
+  73 0001 BCDD8643 		.4byte	1132912060
+  74 0005 40F3E842 		.4byte	1122562880
+  75 0009 CEC88142 		.4byte	1115801806
+  76 000d 79988042 		.4byte	1115723897
+  77 0011 02       		.byte	2
+  78 0012 18DE8643 		.4byte	1132912152
+  79 0016 DEF3E842 		.4byte	1122563038
+  80 001a 3491B141 		.4byte	1102156084
+  81 001e 79988042 		.4byte	1115723897
+  82 0022 02       		.byte	2
+  83 0023 7DDE8643 		.4byte	1132912253
+  84 0027 88F4E842 		.4byte	1122563208
+  85 002b 18860343 		.4byte	1124304408
+  86 002f 79988042 		.4byte	1115723897
+  87              		.section	.rodata.RedSauce2,"a"
+  88              		.align	2
+  91              	RedSauce2:
+  92 0000 01       		.byte	1
+  93 0001 D5676143 		.4byte	1130457045
+  94 0005 6666EB42 		.4byte	1122723430
+  95 0009 E9C88142 		.4byte	1115801833
+  96 000d 79988042 		.4byte	1115723897
+  97 0011 02       		.byte	2
+  98 0012 CF676143 		.4byte	1130457039
+  99 0016 6666EB42 		.4byte	1122723430
+ 100 001a 1069B541 		.4byte	1102407952
+ 101 001e 79988042 		.4byte	1115723897
+ 102 0022 02       		.byte	2
+ 103 0023 FD676143 		.4byte	1130457085
+ 104 0027 8E66EB42 		.4byte	1122723470
+ 105 002b 13820843 		.4byte	1124631059
+ 106 002f 79988042 		.4byte	1115723897
+ 107              		.section	.rodata.SauceDes,"a"
+ 108              		.align	2
+ 111              	SauceDes:
+ 112 0000 01       		.byte	1
+ 113 0001 66D62D43 		.4byte	1127077478
+ 114 0005 8B5D41C3 		.4byte	-1019126389
+ 115 0009 52181F43 		.4byte	1126111314
+ 116 000d A8353241 		.4byte	1093809576
+ 117              		.section	.rodata.GreenSauce1,"a"
+ 118              		.align	2
+ 121              	GreenSauce1:
+ 122 0000 01       		.byte	1
+ 123 0001 0A472943 		.4byte	1126778634
+ 124 0005 7F1BCD42 		.4byte	1120738175
+ 125 0009 B9BC1942 		.4byte	1108982969
+ 126 000d 2A296C42 		.4byte	1114384682
+ 127 0011 02       		.byte	2
+ 128 0012 DC462943 		.4byte	1126778588
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 3
+
+
+ 129 0016 4F6FD242 		.4byte	1121087311
+ 130 001a 1E27B041 		.4byte	1102063390
+ 131 001e 2A296C42 		.4byte	1114384682
+ 132 0022 02       		.byte	2
+ 133 0023 3F462943 		.4byte	1126778431
+ 134 0027 8A6ED242 		.4byte	1121087114
+ 135 002b 303BE042 		.4byte	1121991472
+ 136 002f 2A296C42 		.4byte	1114384682
+ 137              		.section	.rodata.GreenSauce2,"a"
+ 138              		.align	2
+ 141              	GreenSauce2:
+ 142 0000 01       		.byte	1
+ 143 0001 E5C10843 		.4byte	1124647397
+ 144 0005 8669CF42 		.4byte	1120889222
+ 145 0009 4C772742 		.4byte	1109882700
+ 146 000d 2A296C42 		.4byte	1114384682
+ 147 0011 02       		.byte	2
+ 148 0012 D1C10843 		.4byte	1124647377
+ 149 0016 6C69CF42 		.4byte	1120889196
+ 150 001a BC85B541 		.4byte	1102415292
+ 151 001e 2A296C42 		.4byte	1114384682
+ 152 0022 02       		.byte	2
+ 153 0023 3F462943 		.4byte	1126778431
+ 154 0027 8A6ED242 		.4byte	1121087114
+ 155 002b 303BE042 		.4byte	1121991472
+ 156 002f 2A296C42 		.4byte	1114384682
+ 157              		.section	.rodata.gPTPCoordinateParams,"a"
+ 158              		.align	2
+ 161              	gPTPCoordinateParams:
+ 162 0000 0000C842 		.word	1120403456
+ 163 0004 0000C842 		.word	1120403456
+ 164 0008 0000A042 		.word	1117782016
+ 165 000c 0000A042 		.word	1117782016
+ 166              		.section	.rodata.gPTPCommonParams,"a"
+ 167              		.align	2
+ 170              	gPTPCommonParams:
+ 171 0000 00004842 		.word	1112014848
+ 172 0004 00004842 		.word	1112014848
+ 173              		.section	.rodata.Idle,"a"
+ 174              		.align	2
+ 177              	Idle:
+ 178 0000 01       		.byte	1
+ 179 0001 D6F54E43 		.4byte	1129248214
+ 180 0005 68D15742 		.4byte	1113051496
+ 181 0009 46364C42 		.4byte	1112290886
+ 182 000d 69AF6042 		.4byte	1113632617
+ 183              		.section	.text.dobot_init,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	dobot_init
+ 186              		.arch armv7e-m
+ 187              		.syntax unified
+ 188              		.thumb
+ 189              		.thumb_func
+ 190              		.fpu fpv4-sp-d16
+ 192              	dobot_init:
+ 193              	.LFB287:
+ 194              		.file 1 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot/dobot.c"
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 4
+
+
+   1:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** #include <dobot.h>
+   2:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+   3:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** void dobot_init(void)
+   4:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** {
+ 195              		.loc 1 4 1
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 1, uses_anonymous_args = 0
+ 199 0000 80B5     		push	{r7, lr}
+ 200              	.LCFI0:
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 7, -8
+ 203              		.cfi_offset 14, -4
+ 204 0002 00AF     		add	r7, sp, #0
+ 205              	.LCFI1:
+ 206              		.cfi_def_cfa_register 7
+   5:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     MX_USART3_UART_Init();
+ 207              		.loc 1 5 5
+ 208 0004 FFF7FEFF 		bl	MX_USART3_UART_Init
+   6:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCoordinateParams(&gPTPCoordinateParams);
+ 209              		.loc 1 6 5
+ 210 0008 0348     		ldr	r0, .L2
+ 211 000a FFF7FEFF 		bl	SetPTPCoordinateParams
+   7:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCommonParams(&gPTPCommonParams);
+ 212              		.loc 1 7 5
+ 213 000e 0348     		ldr	r0, .L2+4
+ 214 0010 FFF7FEFF 		bl	SetPTPCommonParams
+   8:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** }
+ 215              		.loc 1 8 1
+ 216 0014 00BF     		nop
+ 217 0016 80BD     		pop	{r7, pc}
+ 218              	.L3:
+ 219              		.align	2
+ 220              	.L2:
+ 221 0018 00000000 		.word	gPTPCoordinateParams
+ 222 001c 00000000 		.word	gPTPCommonParams
+ 223              		.cfi_endproc
+ 224              	.LFE287:
+ 226              		.section	.text.grip_ChopSticks,"ax",%progbits
+ 227              		.align	1
+ 228              		.global	grip_ChopSticks
+ 229              		.syntax unified
+ 230              		.thumb
+ 231              		.thumb_func
+ 232              		.fpu fpv4-sp-d16
+ 234              	grip_ChopSticks:
+ 235              	.LFB288:
+   9:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  10:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** void grip_ChopSticks(uint8_t num)
+  11:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** {
+ 236              		.loc 1 11 1
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 16
+ 239              		@ frame_needed = 1, uses_anonymous_args = 0
+ 240 0000 80B5     		push	{r7, lr}
+ 241              	.LCFI2:
+ 242              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 5
+
+
+ 243              		.cfi_offset 7, -8
+ 244              		.cfi_offset 14, -4
+ 245 0002 84B0     		sub	sp, sp, #16
+ 246              	.LCFI3:
+ 247              		.cfi_def_cfa_offset 24
+ 248 0004 00AF     		add	r7, sp, #0
+ 249              	.LCFI4:
+ 250              		.cfi_def_cfa_register 7
+ 251 0006 0346     		mov	r3, r0
+ 252 0008 FB71     		strb	r3, [r7, #7]
+  12:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 	PTS *target = (PTS*)&ChopSticks2;
+ 253              		.loc 1 12 7
+ 254 000a 254B     		ldr	r3, .L6+8
+ 255 000c FB60     		str	r3, [r7, #12]
+  13:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 	if(num == 2)
+ 256              		.loc 1 13 4
+ 257 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 258 0010 022B     		cmp	r3, #2
+ 259 0012 01D1     		bne	.L5
+  14:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 		target = (PTS*)&ChopSticks1;
+ 260              		.loc 1 14 10
+ 261 0014 234B     		ldr	r3, .L6+12
+ 262 0016 FB60     		str	r3, [r7, #12]
+ 263              	.L5:
+  15:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  16:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //移动到筷子上方
+  17:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->SetPoint);
+ 264              		.loc 1 17 15
+ 265 0018 FB68     		ldr	r3, [r7, #12]
+ 266              		.loc 1 17 5
+ 267 001a 1846     		mov	r0, r3
+ 268 001c FFF7FEFF 		bl	SetPTPCmd
+  18:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 269              		.loc 1 18 5
+ 270 0020 4FF4FA60 		mov	r0, #2000
+ 271 0024 FFF7FEFF 		bl	osal_task_sleep
+  19:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  20:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //进入抓取位置
+  21:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->GetPoint);
+ 272              		.loc 1 21 15
+ 273 0028 FB68     		ldr	r3, [r7, #12]
+ 274 002a 1133     		adds	r3, r3, #17
+ 275              		.loc 1 21 5
+ 276 002c 1846     		mov	r0, r3
+ 277 002e FFF7FEFF 		bl	SetPTPCmd
+  22:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(SHORT_INT_TIME);
+ 278              		.loc 1 22 5
+ 279 0032 9FED190B 		vldr.64	d0, .L6
+ 280 0036 FFF7FEFF 		bl	osal_task_sleep
+  23:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  24:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //抓取
+  25:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(engage, hold);
+ 281              		.loc 1 25 5
+ 282 003a 0121     		movs	r1, #1
+ 283 003c 0120     		movs	r0, #1
+ 284 003e FFF7FEFF 		bl	CtrEndEffectorGripper
+  26:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 6
+
+
+ 285              		.loc 1 26 5
+ 286 0042 4FF4FA60 		mov	r0, #2000
+ 287 0046 FFF7FEFF 		bl	osal_task_sleep
+  27:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  28:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //取出筷子
+  29:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->OutPoint);
+ 288              		.loc 1 29 15
+ 289 004a FB68     		ldr	r3, [r7, #12]
+ 290 004c 2233     		adds	r3, r3, #34
+ 291              		.loc 1 29 5
+ 292 004e 1846     		mov	r0, r3
+ 293 0050 FFF7FEFF 		bl	SetPTPCmd
+  30:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 294              		.loc 1 30 5
+ 295 0054 4FF4FA60 		mov	r0, #2000
+ 296 0058 FFF7FEFF 		bl	osal_task_sleep
+  31:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  32:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //移动到泡面上方
+  33:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&ChopSticksDes);
+ 297              		.loc 1 33 5
+ 298 005c 1248     		ldr	r0, .L6+16
+ 299 005e FFF7FEFF 		bl	SetPTPCmd
+  34:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 300              		.loc 1 34 5
+ 301 0062 4FF4FA60 		mov	r0, #2000
+ 302 0066 FFF7FEFF 		bl	osal_task_sleep
+  35:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  36:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //释放
+  37:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(engage, release);
+ 303              		.loc 1 37 5
+ 304 006a 0021     		movs	r1, #0
+ 305 006c 0120     		movs	r0, #1
+ 306 006e FFF7FEFF 		bl	CtrEndEffectorGripper
+  38:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(LONG_INT_TIME);
+ 307              		.loc 1 38 5
+ 308 0072 40F6B830 		movw	r0, #3000
+ 309 0076 FFF7FEFF 		bl	osal_task_sleep
+  39:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  40:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //回到初始位置
+  41:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&Idle);
+ 310              		.loc 1 41 5
+ 311 007a 0C48     		ldr	r0, .L6+20
+ 312 007c FFF7FEFF 		bl	SetPTPCmd
+  42:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 313              		.loc 1 42 5
+ 314 0080 4FF4FA60 		mov	r0, #2000
+ 315 0084 FFF7FEFF 		bl	osal_task_sleep
+  43:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  44:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //关闭气泵
+  45:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(idle, release);
+ 316              		.loc 1 45 5
+ 317 0088 0021     		movs	r1, #0
+ 318 008a 0020     		movs	r0, #0
+ 319 008c FFF7FEFF 		bl	CtrEndEffectorGripper
+  46:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** }
+ 320              		.loc 1 46 1
+ 321 0090 00BF     		nop
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 7
+
+
+ 322 0092 1037     		adds	r7, r7, #16
+ 323              	.LCFI5:
+ 324              		.cfi_def_cfa_offset 8
+ 325 0094 BD46     		mov	sp, r7
+ 326              	.LCFI6:
+ 327              		.cfi_def_cfa_register 13
+ 328              		@ sp needed
+ 329 0096 80BD     		pop	{r7, pc}
+ 330              	.L7:
+ 331              		.align	3
+ 332              	.L6:
+ 333 0098 00000000 		.word	0
+ 334 009c 00709740 		.word	1083666432
+ 335 00a0 00000000 		.word	ChopSticks2
+ 336 00a4 00000000 		.word	ChopSticks1
+ 337 00a8 00000000 		.word	ChopSticksDes
+ 338 00ac 00000000 		.word	Idle
+ 339              		.cfi_endproc
+ 340              	.LFE288:
+ 342              		.section	.text.grip_RedSauce,"ax",%progbits
+ 343              		.align	1
+ 344              		.global	grip_RedSauce
+ 345              		.syntax unified
+ 346              		.thumb
+ 347              		.thumb_func
+ 348              		.fpu fpv4-sp-d16
+ 350              	grip_RedSauce:
+ 351              	.LFB289:
+  47:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  48:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** void grip_RedSauce(uint8_t num)
+  49:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** {
+ 352              		.loc 1 49 1
+ 353              		.cfi_startproc
+ 354              		@ args = 0, pretend = 0, frame = 16
+ 355              		@ frame_needed = 1, uses_anonymous_args = 0
+ 356 0000 80B5     		push	{r7, lr}
+ 357              	.LCFI7:
+ 358              		.cfi_def_cfa_offset 8
+ 359              		.cfi_offset 7, -8
+ 360              		.cfi_offset 14, -4
+ 361 0002 84B0     		sub	sp, sp, #16
+ 362              	.LCFI8:
+ 363              		.cfi_def_cfa_offset 24
+ 364 0004 00AF     		add	r7, sp, #0
+ 365              	.LCFI9:
+ 366              		.cfi_def_cfa_register 7
+ 367 0006 0346     		mov	r3, r0
+ 368 0008 FB71     		strb	r3, [r7, #7]
+  50:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     PTS *target = (PTS*)&RedSauce2;
+ 369              		.loc 1 50 10
+ 370 000a 254B     		ldr	r3, .L10+8
+ 371 000c FB60     		str	r3, [r7, #12]
+  51:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 	if(num == 2) 
+ 372              		.loc 1 51 4
+ 373 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 374 0010 022B     		cmp	r3, #2
+ 375 0012 01D1     		bne	.L9
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 8
+
+
+  52:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 		target = (PTS*)&RedSauce1;
+ 376              		.loc 1 52 10
+ 377 0014 234B     		ldr	r3, .L10+12
+ 378 0016 FB60     		str	r3, [r7, #12]
+ 379              	.L9:
+  53:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     
+  54:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //移动到红色上方
+  55:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->SetPoint);
+ 380              		.loc 1 55 15
+ 381 0018 FB68     		ldr	r3, [r7, #12]
+ 382              		.loc 1 55 5
+ 383 001a 1846     		mov	r0, r3
+ 384 001c FFF7FEFF 		bl	SetPTPCmd
+  56:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 385              		.loc 1 56 5
+ 386 0020 4FF4FA60 		mov	r0, #2000
+ 387 0024 FFF7FEFF 		bl	osal_task_sleep
+  57:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     
+  58:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //进入抓取位置
+  59:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->GetPoint);
+ 388              		.loc 1 59 15
+ 389 0028 FB68     		ldr	r3, [r7, #12]
+ 390 002a 1133     		adds	r3, r3, #17
+ 391              		.loc 1 59 5
+ 392 002c 1846     		mov	r0, r3
+ 393 002e FFF7FEFF 		bl	SetPTPCmd
+  60:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(SHORT_INT_TIME);
+ 394              		.loc 1 60 5
+ 395 0032 9FED190B 		vldr.64	d0, .L10
+ 396 0036 FFF7FEFF 		bl	osal_task_sleep
+  61:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  62:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //抓取
+  63:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(engage, hold);
+ 397              		.loc 1 63 5
+ 398 003a 0121     		movs	r1, #1
+ 399 003c 0120     		movs	r0, #1
+ 400 003e FFF7FEFF 		bl	CtrEndEffectorGripper
+  64:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 401              		.loc 1 64 5
+ 402 0042 4FF4FA60 		mov	r0, #2000
+ 403 0046 FFF7FEFF 		bl	osal_task_sleep
+  65:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  66:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     ///取出红色
+  67:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->OutPoint);
+ 404              		.loc 1 67 15
+ 405 004a FB68     		ldr	r3, [r7, #12]
+ 406 004c 2233     		adds	r3, r3, #34
+ 407              		.loc 1 67 5
+ 408 004e 1846     		mov	r0, r3
+ 409 0050 FFF7FEFF 		bl	SetPTPCmd
+  68:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 410              		.loc 1 68 5
+ 411 0054 4FF4FA60 		mov	r0, #2000
+ 412 0058 FFF7FEFF 		bl	osal_task_sleep
+  69:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  70:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //移动到泡面上方
+  71:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&SauceDes);
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 9
+
+
+ 413              		.loc 1 71 5
+ 414 005c 1248     		ldr	r0, .L10+16
+ 415 005e FFF7FEFF 		bl	SetPTPCmd
+  72:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 416              		.loc 1 72 5
+ 417 0062 4FF4FA60 		mov	r0, #2000
+ 418 0066 FFF7FEFF 		bl	osal_task_sleep
+  73:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  74:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //释放
+  75:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(engage, release);
+ 419              		.loc 1 75 5
+ 420 006a 0021     		movs	r1, #0
+ 421 006c 0120     		movs	r0, #1
+ 422 006e FFF7FEFF 		bl	CtrEndEffectorGripper
+  76:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(LONG_INT_TIME);
+ 423              		.loc 1 76 5
+ 424 0072 40F6B830 		movw	r0, #3000
+ 425 0076 FFF7FEFF 		bl	osal_task_sleep
+  77:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  78:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //回到初始位置
+  79:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&Idle);
+ 426              		.loc 1 79 5
+ 427 007a 0C48     		ldr	r0, .L10+20
+ 428 007c FFF7FEFF 		bl	SetPTPCmd
+  80:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 429              		.loc 1 80 5
+ 430 0080 4FF4FA60 		mov	r0, #2000
+ 431 0084 FFF7FEFF 		bl	osal_task_sleep
+  81:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  82:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //关闭气泵
+  83:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(idle, release);
+ 432              		.loc 1 83 5
+ 433 0088 0021     		movs	r1, #0
+ 434 008a 0020     		movs	r0, #0
+ 435 008c FFF7FEFF 		bl	CtrEndEffectorGripper
+  84:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** }
+ 436              		.loc 1 84 1
+ 437 0090 00BF     		nop
+ 438 0092 1037     		adds	r7, r7, #16
+ 439              	.LCFI10:
+ 440              		.cfi_def_cfa_offset 8
+ 441 0094 BD46     		mov	sp, r7
+ 442              	.LCFI11:
+ 443              		.cfi_def_cfa_register 13
+ 444              		@ sp needed
+ 445 0096 80BD     		pop	{r7, pc}
+ 446              	.L11:
+ 447              		.align	3
+ 448              	.L10:
+ 449 0098 00000000 		.word	0
+ 450 009c 00709740 		.word	1083666432
+ 451 00a0 00000000 		.word	RedSauce2
+ 452 00a4 00000000 		.word	RedSauce1
+ 453 00a8 00000000 		.word	SauceDes
+ 454 00ac 00000000 		.word	Idle
+ 455              		.cfi_endproc
+ 456              	.LFE289:
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 10
+
+
+ 458              		.section	.text.grip_GreenSauce,"ax",%progbits
+ 459              		.align	1
+ 460              		.global	grip_GreenSauce
+ 461              		.syntax unified
+ 462              		.thumb
+ 463              		.thumb_func
+ 464              		.fpu fpv4-sp-d16
+ 466              	grip_GreenSauce:
+ 467              	.LFB290:
+  85:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  86:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** void grip_GreenSauce(uint8_t num)
+  87:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** {
+ 468              		.loc 1 87 1
+ 469              		.cfi_startproc
+ 470              		@ args = 0, pretend = 0, frame = 16
+ 471              		@ frame_needed = 1, uses_anonymous_args = 0
+ 472 0000 80B5     		push	{r7, lr}
+ 473              	.LCFI12:
+ 474              		.cfi_def_cfa_offset 8
+ 475              		.cfi_offset 7, -8
+ 476              		.cfi_offset 14, -4
+ 477 0002 84B0     		sub	sp, sp, #16
+ 478              	.LCFI13:
+ 479              		.cfi_def_cfa_offset 24
+ 480 0004 00AF     		add	r7, sp, #0
+ 481              	.LCFI14:
+ 482              		.cfi_def_cfa_register 7
+ 483 0006 0346     		mov	r3, r0
+ 484 0008 FB71     		strb	r3, [r7, #7]
+  88:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     PTS *target = (PTS*)&GreenSauce2;
+ 485              		.loc 1 88 10
+ 486 000a 254B     		ldr	r3, .L14+8
+ 487 000c FB60     		str	r3, [r7, #12]
+  89:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 	if(num == 2) 
+ 488              		.loc 1 89 4
+ 489 000e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 490 0010 022B     		cmp	r3, #2
+ 491 0012 01D1     		bne	.L13
+  90:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 		target = (PTS*)&GreenSauce1;
+ 492              		.loc 1 90 10
+ 493 0014 234B     		ldr	r3, .L14+12
+ 494 0016 FB60     		str	r3, [r7, #12]
+ 495              	.L13:
+  91:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     
+  92:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //移动到绿色上方
+  93:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->SetPoint);
+ 496              		.loc 1 93 15
+ 497 0018 FB68     		ldr	r3, [r7, #12]
+ 498              		.loc 1 93 5
+ 499 001a 1846     		mov	r0, r3
+ 500 001c FFF7FEFF 		bl	SetPTPCmd
+  94:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 501              		.loc 1 94 5
+ 502 0020 4FF4FA60 		mov	r0, #2000
+ 503 0024 FFF7FEFF 		bl	osal_task_sleep
+  95:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+  96:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //进入抓取位置
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 11
+
+
+  97:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->GetPoint);
+ 504              		.loc 1 97 15
+ 505 0028 FB68     		ldr	r3, [r7, #12]
+ 506 002a 1133     		adds	r3, r3, #17
+ 507              		.loc 1 97 5
+ 508 002c 1846     		mov	r0, r3
+ 509 002e FFF7FEFF 		bl	SetPTPCmd
+  98:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(SHORT_INT_TIME);
+ 510              		.loc 1 98 5
+ 511 0032 9FED190B 		vldr.64	d0, .L14
+ 512 0036 FFF7FEFF 		bl	osal_task_sleep
+  99:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+ 100:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //抓取
+ 101:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(engage, hold);
+ 513              		.loc 1 101 5
+ 514 003a 0121     		movs	r1, #1
+ 515 003c 0120     		movs	r0, #1
+ 516 003e FFF7FEFF 		bl	CtrEndEffectorGripper
+ 102:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 517              		.loc 1 102 5
+ 518 0042 4FF4FA60 		mov	r0, #2000
+ 519 0046 FFF7FEFF 		bl	osal_task_sleep
+ 103:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+ 104:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //取出绿色
+ 105:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&target->OutPoint);
+ 520              		.loc 1 105 15
+ 521 004a FB68     		ldr	r3, [r7, #12]
+ 522 004c 2233     		adds	r3, r3, #34
+ 523              		.loc 1 105 5
+ 524 004e 1846     		mov	r0, r3
+ 525 0050 FFF7FEFF 		bl	SetPTPCmd
+ 106:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 526              		.loc 1 106 5
+ 527 0054 4FF4FA60 		mov	r0, #2000
+ 528 0058 FFF7FEFF 		bl	osal_task_sleep
+ 107:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+ 108:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //移动到泡面上方
+ 109:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&SauceDes);
+ 529              		.loc 1 109 5
+ 530 005c 1248     		ldr	r0, .L14+16
+ 531 005e FFF7FEFF 		bl	SetPTPCmd
+ 110:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 532              		.loc 1 110 5
+ 533 0062 4FF4FA60 		mov	r0, #2000
+ 534 0066 FFF7FEFF 		bl	osal_task_sleep
+ 111:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+ 112:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //释放
+ 113:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(engage, release);
+ 535              		.loc 1 113 5
+ 536 006a 0021     		movs	r1, #0
+ 537 006c 0120     		movs	r0, #1
+ 538 006e FFF7FEFF 		bl	CtrEndEffectorGripper
+ 114:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(LONG_INT_TIME);
+ 539              		.loc 1 114 5
+ 540 0072 40F6B830 		movw	r0, #3000
+ 541 0076 FFF7FEFF 		bl	osal_task_sleep
+ 115:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 12
+
+
+ 116:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //回到初始位置
+ 117:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     SetPTPCmd(&Idle);
+ 542              		.loc 1 117 5
+ 543 007a 0C48     		ldr	r0, .L14+20
+ 544 007c FFF7FEFF 		bl	SetPTPCmd
+ 118:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     osal_task_sleep(MID_INT_TIME);
+ 545              		.loc 1 118 5
+ 546 0080 4FF4FA60 		mov	r0, #2000
+ 547 0084 FFF7FEFF 		bl	osal_task_sleep
+ 119:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** 
+ 120:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     //关闭气泵
+ 121:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c ****     CtrEndEffectorGripper(idle, release);
+ 548              		.loc 1 121 5
+ 549 0088 0021     		movs	r1, #0
+ 550 008a 0020     		movs	r0, #0
+ 551 008c FFF7FEFF 		bl	CtrEndEffectorGripper
+ 122:c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot\dobot.c **** }...
+ 552              		.loc 1 122 1
+ 553 0090 00BF     		nop
+ 554 0092 1037     		adds	r7, r7, #16
+ 555              	.LCFI15:
+ 556              		.cfi_def_cfa_offset 8
+ 557 0094 BD46     		mov	sp, r7
+ 558              	.LCFI16:
+ 559              		.cfi_def_cfa_register 13
+ 560              		@ sp needed
+ 561 0096 80BD     		pop	{r7, pc}
+ 562              	.L15:
+ 563              		.align	3
+ 564              	.L14:
+ 565 0098 00000000 		.word	0
+ 566 009c 00709740 		.word	1083666432
+ 567 00a0 00000000 		.word	GreenSauce2
+ 568 00a4 00000000 		.word	GreenSauce1
+ 569 00a8 00000000 		.word	SauceDes
+ 570 00ac 00000000 		.word	Idle
+ 571              		.cfi_endproc
+ 572              	.LFE290:
+ 574              		.text
+ 575              	.Letext0:
+ 576              		.file 2 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\machine\\_defa
+ 577              		.file 3 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\lock.h"
+ 578              		.file 4 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_types.h"
+ 579              		.file 5 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\lib\\gcc\\arm-none-eabi\\9.2.1\\includ
+ 580              		.file 6 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\reent.h"
+ 581              		.file 7 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_typedef.h"
+ 582              		.file 8 "c:\\users\\mi\\.iotlink\\tools\\gcc-arm-none-eabi\\arm-none-eabi\\include\\sys\\_stdint.h
+ 583              		.file 9 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/common/cmsis/core_cm4.h"
+ 584              		.file 10 "c:/Users/MI/Documents/IoTLink/HWCup/Inc/system_stm32l4xx.h"
+ 585              		.file 11 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_config.h"
+ 586              		.file 12 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/include/los_err.h"
+ 587              		.file 13 "C:/Users/MI/.iotlink/sdk/IoT_LINK/iot_link/os/liteos/arch/arm/arm-m/include/los_hwi.h"
+ 588              		.file 14 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot/dobot_cmd.h"
+ 589              		.file 15 "c:/Users/MI/Documents/IoTLink/HWCup/Hardware/dobot/dobot.h"
+ARM GAS  C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 dobot.c
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:18     .rodata.ChopSticks1:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:21     .rodata.ChopSticks1:00000000 ChopSticks1
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:38     .rodata.ChopSticks2:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:41     .rodata.ChopSticks2:00000000 ChopSticks2
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:58     .rodata.ChopSticksDes:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:61     .rodata.ChopSticksDes:00000000 ChopSticksDes
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:68     .rodata.RedSauce1:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:71     .rodata.RedSauce1:00000000 RedSauce1
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:88     .rodata.RedSauce2:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:91     .rodata.RedSauce2:00000000 RedSauce2
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:108    .rodata.SauceDes:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:111    .rodata.SauceDes:00000000 SauceDes
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:118    .rodata.GreenSauce1:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:121    .rodata.GreenSauce1:00000000 GreenSauce1
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:138    .rodata.GreenSauce2:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:141    .rodata.GreenSauce2:00000000 GreenSauce2
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:158    .rodata.gPTPCoordinateParams:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:161    .rodata.gPTPCoordinateParams:00000000 gPTPCoordinateParams
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:167    .rodata.gPTPCommonParams:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:170    .rodata.gPTPCommonParams:00000000 gPTPCommonParams
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:174    .rodata.Idle:00000000 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:177    .rodata.Idle:00000000 Idle
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:184    .text.dobot_init:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:192    .text.dobot_init:00000000 dobot_init
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:221    .text.dobot_init:00000018 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:227    .text.grip_ChopSticks:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:234    .text.grip_ChopSticks:00000000 grip_ChopSticks
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:333    .text.grip_ChopSticks:00000098 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:343    .text.grip_RedSauce:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:350    .text.grip_RedSauce:00000000 grip_RedSauce
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:449    .text.grip_RedSauce:00000098 $d
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:459    .text.grip_GreenSauce:00000000 $t
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:466    .text.grip_GreenSauce:00000000 grip_GreenSauce
+C:\Users\MI\AppData\Local\Temp\ccDX8EuR.s:565    .text.grip_GreenSauce:00000098 $d
+
+UNDEFINED SYMBOLS
+MX_USART3_UART_Init
+SetPTPCoordinateParams
+SetPTPCommonParams
+SetPTPCmd
+osal_task_sleep
+CtrEndEffectorGripper
